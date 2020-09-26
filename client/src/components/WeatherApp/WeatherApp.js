@@ -201,8 +201,10 @@ class WeatherApp extends Component {
     const url = `${loc_uri}${uriPlace}`;
     axios.get(url)
       .then(result => {
-        if (result.data.results.length > 1) {
+        console.log('before if', result.data.results)
+        if (result.data.results.length < 1) {
         } else {
+          console.log('got it!', result.data);
           const res = result.data.results[0];
           const { location } = res.geometry;
           const newLocs = clone(locations);
@@ -224,7 +226,6 @@ class WeatherApp extends Component {
   }
 
   render() {
-    console.log('state:', this.state.response, process.env);
     const { response, loading, temp } = this.state;
     return (
       <div className='weatherWeatherApp'>
