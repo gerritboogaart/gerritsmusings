@@ -1,0 +1,17 @@
+{
+    "eindhoven": {
+        "name": "Eindhoven, NL",
+        "long": 5.47778,
+        "lat": 51.44083
+      },
+      "vabeach": {
+        "name": "Virginia Beach",
+        "long": -75.9779,
+        "lat": 36.8506
+      },
+      "newyork": {
+        "name": "New York City",
+        "long": -74.00597,
+        "lat": 40.71427
+      }
+}

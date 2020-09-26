@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const axios = require('axios');
+const locs = require('./locations.json');
 
 const port = process.env.PORT || 5000;
 
@@ -22,12 +23,23 @@ if(process.env.NODE_ENV === 'production') {
   });
   app.get('/weather', function(req,res,next){
     console.log('getting weather', req.query);
-    // res.status(200).send({ success: req.query });
     const loc = req.query.location;
     const url = `${weather}${loc}`;
-    // // axios.get('http://www.mocky.io/v2/5d30962b320000a97720460b') // Getting the data from DarkSky
-    // //   .then( result => res.status(200).send({succes: result}))
-    // //   .catch( error => res.status(400).send(error))
+    axios.get(url)
+    .then(function (response) {
+      res.status(200).send(response.data);
+    })
+  });
+
+  app.get('/location', function(req,res,next){
+    console.log('getting location', req.query);
+    const loc = req.query.place;
+    if (!locs[loc]) {
+      locs[loc] = {
+        name: [loc],
+      }
+    }
+    const url = `${location}address=${loc}&key=${api}`;
     axios.get(url)
     .then(function (response) {
       res.status(200).send(response.data);
