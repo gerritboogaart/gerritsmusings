@@ -4,6 +4,7 @@
 
 .weatherWeatherApp li {
   margin: 0px;
+  display: block;
 }
 
 .hour-holder {
@@ -16,11 +17,11 @@
 }
 
 .response {
-  background: lightblue;
-  width: 50%;
-  margin: 2rem auto;
-  max-height: 15rem;
+  width: 18rem;
+  max-height: 14rem;
   padding: 1rem;
+  text-align: left;
+  border-right: 1px solid lightgrey;
 }
 
 .day-ul {
@@ -29,17 +30,18 @@
 }
 
 .day-holder {
-  background: lightblue;
+  /* background: lightblue; */
   display: inline-block;
   width: 9rem;
   height: 23rem;
   margin-left: 1rem;
   vertical-align: top;
   padding: 0.2rem;
+  border-radius: 6px;
 }
 
 .top-day {
-  min-height: 4rem;
+  min-height: 5rem;
 }
 
 .summary {
@@ -56,11 +58,11 @@
   width: 95%;
   height: 121px;
   margin: auto;
-  background-size: cover!important;
+  /* background-size: cover!important; */
 }
 
 .partly-cloudy-day {
-  background: url('partly-cloudy-day.png');
+  background: url('weather.jpg') 1656px 849px;
 }
 
 .partly-cloudy-night {
@@ -68,7 +70,7 @@
 }
 
 .sunny, .clear-day {
-  background: url('../../Public/clear.png');
+  background: url('weather.jpg') 1656px 1153px;
 }
 
 .clear-night {
@@ -76,7 +78,7 @@
 }
 
 .rain {
-  background: url('rain.png');
+  background: url('weather.jpg') 302px 1156px;
 }
 
 .cloudy {
@@ -105,13 +107,13 @@ flex: 1;
 
 .nav-buttons {
   position: relative;
-  top: -12rem;
-  left: 33rem;
-  width:20rem;
+  top: -16rem;
+  left: -2rem;
+  z-index: 3000;
 }
 
 .location-ul {
-  display: grid;
+  display: inline-flex;
 }
 
 button {
@@ -132,11 +134,12 @@ button {
 }
 
 .temp-button {
-  font-size: .8rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  border-radius: 50%;
-  background: darkblue;
+  /* border-radius: 50%; */
+  /* background: darkblue; */
   color: white;
+  border: none;
 }
 
 .hours-holder {

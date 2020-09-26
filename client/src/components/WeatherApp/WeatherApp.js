@@ -98,7 +98,7 @@ class WeatherApp extends Component {
     const t = parseFloat(currently.temperature);
     const { temp, deg } = calcTemp(t, this.state.temp);
     const time = new Date(currently.time * 1000);
-    const curtime = `Date: ${time.getMonth() + 1}/${time.getDate()}/${time.getFullYear()}`;
+    const curtime = `${time.getMonth() + 1}/${time.getDate()}/${time.getFullYear()}`;
     const minutes = time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes();
     // let hours = time.getHours() < 10 ? `0${time.getHours()}` : time.getHours();
     const sec = time.getSeconds() < 10 ? `0${time.getSeconds()}` : time.getSeconds();
@@ -108,11 +108,11 @@ class WeatherApp extends Component {
 
     return (
       <div>
-        <p>The situation in {locations[this.state.location].name} is:</p>
-        <p>Temperature: {temp} {deg}</p>
-        <p>Weather: {currently.summary}</p>
-        <p>Date: {curtime}</p>
-        <p>Time: {clock}</p>
+        <p>The situation in <span style={{ fontWeight: 'bold' }}>{locations[this.state.location].name}</span> is:</p>
+        <p><span style={{ fontWeight: 'bold' }}>Temperature:</span> {temp} {deg}</p>
+        <p><span style={{ fontWeight: 'bold' }}>Weather:</span> {currently.summary}</p>
+        <p><span style={{ fontWeight: 'bold' }}>Date:</span> {curtime}</p>
+        <p><span style={{ fontWeight: 'bold' }}>Time:</span> {clock}</p>
       </div>
     );
   }
@@ -201,10 +201,8 @@ class WeatherApp extends Component {
     const url = `${loc_uri}${uriPlace}`;
     axios.get(url)
       .then(result => {
-        console.log('before if', result.data.results)
         if (result.data.results.length < 1) {
         } else {
-          console.log('got it!', result.data);
           const res = result.data.results[0];
           const { location } = res.geometry;
           const newLocs = clone(locations);
@@ -232,30 +230,33 @@ class WeatherApp extends Component {
         {response && !loading
           ?
           <div>
-          <div className='topnav'>
-            <input name='place' onChange={this.setlookupplace}></input><button onClick={() => this.lookupplace()}>Find new city</button>
-          </div>
-          <div className='response'>
-            {this.getTemp()}
-            <p></p>
-            <div className='nav-buttons'>
-              <div className='button-holder'><button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</button></div>
-              <p></p>
-              <div><ul className='location-ul'> {this.renderLocations()}</ul></div>
+            <div className='topnav'>
+              <input name='place' onChange={this.setlookupplace}></input><button onClick={() => this.lookupplace()}>Find new city</button>
             </div>
-          </div>
-          <div className='daysforcast'>
-            {this.renderDays()}
-          </div>
-          <div className='bottom-info'>
-            <div className='graph'>
-              {this.renderGraphs()}
+            <div style={{ display: 'flex' }}>
+              <div className='response'>
+                {this.getTemp()}
+                <p></p>
+                <div className='nav-buttons'>
+                  <div><ul className='location-ul'>
+                    <li><button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</button></li>
+                    {/* {this.renderLocations()} */}
+                  </ul></div>
+                </div>
+              </div>
+              <div className='daysforcast'>
+                {this.renderDays()}
+              </div>
             </div>
+            <div className='bottom-info'>
+              <div className='graph'>
+                {this.renderGraphs()}
+              </div>
 
-          </div>
-          <div className='hours-holder'>
-            <Hourly hourly={response.hourly} loading={loading} tempType={temp} />
-          </div>
+            </div>
+            <div className='hours-holder'>
+              <Hourly hourly={response.hourly} loading={loading} tempType={temp} />
+            </div>
           </div>
           : <p>Loading...</p>}
       </div>
