@@ -1,0 +1,209 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hour-holder {
+  width: 8rem;
+  font-size: .7rem;
+  float: left;
+  border: 1px solid lightblue;
+  background: lightblue;
+  margin: 1rem;
+
+}
+
+.response {
+  background: lightblue;
+  width: 50%;
+  margin: 2rem auto;
+  max-height: 15rem;
+  padding: 1rem;
+}
+
+.day-ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+.day-holder {
+  background: lightblue;
+  display: inline-block;
+  width: 9rem;
+  height: 20rem;
+  margin-left: 1rem;
+  vertical-align: top;
+  padding: 0.2rem;
+}
+
+.top-day {
+  min-height: 4rem;
+}
+
+.summary {
+  font-size: .75rem;
+}
+
+
+
+:focus {
+  outline: none !important;
+}
+
+.weather {
+  width: 95%;
+  height: 121px;
+  margin: auto;
+  background-size: cover!important;
+}
+
+.partly-cloudy-day {
+  background: url('partly-cloudy-day.png');
+}
+
+.partly-cloudy-night {
+  background: url('./Public/partly-cloudy-night.png');
+}
+
+.sunny, .clear-day {
+  background: url('./Public/clear.png');
+}
+
+.clear-night {
+  background: url('./Public/clear-night.png');
+}
+
+.rain {
+  background: url('rain.png');
+}
+
+.cloudy {
+  background: url('clowdy.png');
+}
+
+.snow {
+  background: url('snow.png');
+}
+
+.thunder {
+  background: url('thunder.png');
+}
+
+.wind {
+  background: url('windy.png');
+}
+
+.perc {
+  margin-top: .75rem;
+}
+
+.graph {
+flex: 1;
+}
+
+.nav-buttons {
+  position: relative;
+  top: -12rem;
+  left: 21rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.location-button {
+  width: 8rem;
+  height: 2rem;
+  margin: .2rem;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.selected {
+  background: darkblue;
+  color: white;
+}
+
+.temp-button {
+  font-size: .8rem;
+  font-weight: 600;
+  border-radius: 50%;
+  background: darkblue;
+  color: white;
+}
+
+.hours-holder {
+  flex: 2;
+  max-height: 20rem;
+  margin-left: 2rem;
+  overflow: scroll;
+}
+
+.bottom-info {
+  display: flex;
+  margin-top: 4rem;
+  width: 95%;
+}
+
+.hourly-temp {
+  display: inline-block;
+  width: 32px;
+  height: 27px;
+  background-size: cover;
+  position: relative;
+  top: .4rem;
+  margin-right: 1rem;
+}
+
+.weatherapp {
+  text-align: center;
+}
+
+.total {
+  display: flex;
+}
+
+.left {
+  flex: 1
+}
+
+.center {
+ flex: 2
+}
+
+.right {
+ flex: 1;
+}

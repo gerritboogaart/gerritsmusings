@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { AreaChart, linearGradient, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
 import Hourly from '../Hourly/Hourly';
-import { calcTemp, calcAmPm, renderToday } from './Utils/Temperature';
-import { DAYS } from './Constants/constants';
+import { calcTemp, calcAmPm, renderToday } from '../../Utils/Temperature';
+import { DAYS } from '../../Constants/constants';
 import { clone } from 'lodash';
 // import socketIOClient from "socket.io-client";
 
-import 'semantic-ui-css/semantic.min.css'
-import './App.css';
+// import 'semantic-ui-css/semantic.min.css'
+import './WeatherApp.css';
 // 51.44083, 5.47778
 const locations = {
   eindhoven: {
@@ -28,18 +28,16 @@ const locations = {
   }
 }
 
-
-
 // const weather = 'https://api.darksky.net/forecast/e24ad33f75846e0954a59d1c38033e6a';
-class App extends Component {
+class WeatherApp extends Component {
   constructor() {
     super();
     this.state = {
       response: false,
       endpoint: "",
       temp: 'F',
-      uri: 'http://localhost:4000/weather?location=',
-      loc_uri: 'http://localhost:4000/location?place=',
+      uri: '/weather?location=',
+      loc_uri: '/location?place=',
       location: 'vabeach',
       locations: locations,
       loading: false,
@@ -183,7 +181,6 @@ class App extends Component {
         <Area type="monotone" dataKey="temperatureLow" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
       </AreaChart>
     )
-
   }
 
   setlookupplace = (e) => {
@@ -213,22 +210,18 @@ class App extends Component {
           console.log(locations);
           this.setState({ location: name, locations: newLocs }, () => this.getWeatherUpdate());
         }
-
       })
       .catch(error => {
         console.log(error);
       })
   }
 
-
-
   render() {
     console.log('state:', this.state.response);
     console.log(process.env);
     const { response, loading, temp } = this.state;
     return (
-      <div className='weatherapp'>
-
+      <div className='weatherWeatherApp'>
         {response && !loading
           ?
           <div>
@@ -264,4 +257,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default WeatherApp;

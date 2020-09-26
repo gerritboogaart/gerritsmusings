@@ -1,14 +1,11 @@
 import React from 'react';
 import './App.css';
+import WeatherApp from './components/WeatherApp/WeatherApp';
 
 function App() {
-  const fetching = () => fetch('./test').then((res) => console.log('this', res));
-  const getServer = () => fetch('/');
-  getServer();
-  fetching();
   return (
     <div className="App">
-      Hello app!!!!
+      <WeatherApp />
     </div>
   );
 }
