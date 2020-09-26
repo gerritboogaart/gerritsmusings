@@ -95,15 +95,15 @@
 }
 
 .partly-cloudy-night {
-  background: url('./Public/partly-cloudy-night.png');
+  background: url('../../Public/partly-cloudy-night.png');
 }
 
 .sunny, .clear-day {
-  background: url('./Public/clear.png');
+  background: url('../../Public/clear.png');
 }
 
 .clear-night {
-  background: url('./Public/clear-night.png');
+  background: url('../../Public/clear-night.png');
 }
 
 .rain {
