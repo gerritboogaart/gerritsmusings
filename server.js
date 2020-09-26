@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const port = process.env.PORT || 5000;
 
@@ -7,9 +8,15 @@ const port = process.env.PORT || 5000;
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('/test', function(req,res) {
+    res.status(200).send('good things');
+  });
   app.get('*', (req, res) => { res.sendfile(path.join(__dirname = 'client/build/index.html'));  })
 }
+app.get('/test', function(req,res) {
+  res.status(200).send('good things');
+});
 
 app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
 
-app.listen(port, (req, res) => {  console.log( `server listening on port: ${port}`);})
+app.listen(port, (req, res) => {  console.log( `dudes listening on port: ${port}`);})
