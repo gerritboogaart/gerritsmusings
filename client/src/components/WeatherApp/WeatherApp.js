@@ -63,7 +63,7 @@ class WeatherApp extends Component {
     }
   };
   getWeatherUpdate = () => {
-    const { uri, location } = this.state;
+    const { uri, location, locations } = this.state;
     const long = locations[location].long;
     const lat = locations[location].lat;
     const url = `${uri}${lat},${long}`;
