@@ -38,6 +38,20 @@ app.get('/test', function(req,res) {
   res.status(200).send('good things');
 });
 
+app.get('/weather', function(req,res,next){
+  console.log('getting weather', req.query);
+  const loc = req.query.location;
+  const url = `${weather}${loc}`;
+  // axios.get('http://www.mocky.io/v2/5d30962b320000a97720460b') // Getting the data from DarkSky
+  //   .then( result => res.status(200).send({succes: result}))
+  //   .catch( error => res.status(400).send(error))
+  axios.get(url)
+  .then(function (response) {
+    res.status(200).send(response.data);
+  })
+  // res.status(200).send({succes: 1234});
+});
+
 app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
 
 app.listen(port, (req, res) => {  console.log( `dudes listening on port: ${port}`);})

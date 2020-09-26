@@ -8,7 +8,7 @@ import { clone } from 'lodash';
 // import socketIOClient from "socket.io-client";
 
 // import 'semantic-ui-css/semantic.min.css'
-import './WeatherApp.css';
+// import './WeatherApp.css';
 // 51.44083, 5.47778
 const locations = {
   eindhoven: {
@@ -46,14 +46,7 @@ class WeatherApp extends Component {
   }
 
   componentDidMount = () => {
-    // axios.get('locs')
-    //   .then(result => {
-    //     console.log(result);
-    //     this.setState({ locations: result.data }, () => this.getWeatherUpdate());
-    //   })
-    //   .catch(error => {
-    //     console.log('error', error);
-    //   })
+    this.getWeatherUpdate();
   };
   getWeatherUpdate = () => {
     const { uri, location } = this.state;
@@ -218,7 +211,6 @@ class WeatherApp extends Component {
 
   render() {
     console.log('state:', this.state.response);
-    console.log(process.env);
     const { response, loading, temp } = this.state;
     return (
       <div className='weatherWeatherApp'>
