@@ -4,11 +4,13 @@ import { AreaChart, linearGradient, XAxis, YAxis, CartesianGrid, Tooltip, Area }
 import Hourly from '../Hourly/Hourly';
 import { calcTemp, calcAmPm, renderToday } from '../../Utils/Temperature';
 import { DAYS } from '../../Constants/constants';
+import { MOCK } from '../../Constants/mockdata';
+
 import { clone } from 'lodash';
 // import socketIOClient from "socket.io-client";
 
 // import 'semantic-ui-css/semantic.min.css'
-// import './WeatherApp.css';
+import './WeatherApp.css';
 // 51.44083, 5.47778
 const locations = {
   eindhoven: {
@@ -46,7 +48,19 @@ class WeatherApp extends Component {
   }
 
   componentDidMount = () => {
-    this.getWeatherUpdate();
+    if (process.env.NODE_ENV === 'development') {
+      const { daily } = MOCK;
+      const extraDay = daily.data.map(day => {
+        const time = new Date(day.time * 1000);
+        const curtime = `${time.getMonth() + 1}/${time.getDate()}`;
+        const dow = DAYS[time.getDay()];
+        const useDay = `${dow} ${curtime}`;
+        return { ...day, useDay };
+      });
+      this.setState({ response: MOCK, loading: false, days: extraDay });
+    } else {
+      this.getWeatherUpdate();
+    }
   };
   getWeatherUpdate = () => {
     const { uri, location } = this.state;
@@ -210,7 +224,7 @@ class WeatherApp extends Component {
   }
 
   render() {
-    console.log('state:', this.state.response);
+    console.log('state:', this.state.response, process.env);
     const { response, loading, temp } = this.state;
     return (
       <div className='weatherWeatherApp'>
