@@ -14,7 +14,7 @@ import './WeatherApp.css';
 // 51.44083, 5.47778
 const locations = {
   eindhoven: {
-    name: 'Eindhoven, NL',
+    name: 'Eindhoven',
     long: 5.47778,
     lat: 51.44083
   },
@@ -211,7 +211,7 @@ class WeatherApp extends Component {
           const name = res.address_components[0].short_name;
           if (!newLocs[name]) {
             newLocs[name] = {
-              name: res.formatted_address || name,
+              name: name || res.formatted_address,
               long: location.lng,
               lat: location.lat
             }
