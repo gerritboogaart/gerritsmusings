@@ -17,10 +17,10 @@ const CARDS = {
     description: 'See blocks fall as you click them away'
   },
   cards: {
-    url: '/cards',
-    className: 'cards-card',
-    header: 'Cards Game',
-    description: 'Do something'
+    url: '/weather',
+    className: 'weather-card',
+    header: 'Weather App',
+    description: 'Check your local weather'
   },
   blog: {
     url: '/blog',
@@ -36,7 +36,7 @@ const createCard = type => {
   return (
     <div className='single-card'>
       <Link to={details.url} >
-        <Card style={{minHeight: '17rem'}}>
+        <Card className='gerrit-card' style={{minHeight: '17rem'}}>
           <Card.Content className={details.className}>
 
           </Card.Content>

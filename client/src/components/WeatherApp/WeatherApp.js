@@ -240,7 +240,7 @@ class WeatherApp extends Component {
             <div className='nav-buttons'>
               <div className='button-holder'><button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</button></div>
               <p></p>
-              <div><ul className='day-ul'> {this.renderLocations()}</ul></div>
+              <div><ul className='location-ul'> {this.renderLocations()}</ul></div>
             </div>
           </div>
           <div className='daysforcast'>

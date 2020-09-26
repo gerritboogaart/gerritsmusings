@@ -8,9 +8,13 @@
 
 }
 
+.gerrit-card {
+  width: 18rem!important;
+  padding: 3px!important;
+}
+
 .single-card {
   margin-left: 2rem;;
-
 }
 
 
@@ -28,8 +32,8 @@
   height: 9rem;
 }
 
-.cards-card {
-  background: url('../../resources/cards.png')!important;
+.weather-card {
+  background: url('../../resources/weather.png')!important;
   background-repeat: no-repeat!important;;
   background-size: contain!important;
   height: 9rem;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Start } from './components/Start/Start';
 import { Home } from './components/Forms/Home/Home';

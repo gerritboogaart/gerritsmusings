@@ -44,7 +44,7 @@ export default class Hourly extends Component {
     }
 
     render() {
-        const { hourly, loading, tempType } = this.props;
+        const { hourly, loading } = this.props;
         if (!hourly || loading) return <div />;
         return (
             <Table celled className='hours-table'>
