@@ -1,0 +1,60 @@
+.examples {
+  margin: 3rem;
+  width: 100%;
+  display: flex;
+}
+
+.name-area {
+  flex: 1;
+  padding: 1rem;
+}
+
+.name-area li {
+  cursor: pointer;
+  margin: 1rem!important
+}
+
+.name-area .small {
+  font-size: 10px;
+  line-height: 8px;
+  color: lightgray;
+
+}
+
+.name-area li:hover {
+  font-weight: bolder;
+}
+
+.edit-area {
+  flex: 2;
+  border-left: 1px solid lightgray;
+  padding: 1rem;
+}
+
+.name-area  .ui.rating {
+  font-size: .6rem!important;
+}
+
+.indent1 {
+  margin-left: 1rem;
+}
+
+.indent2 {
+  margin-left: 2rem;
+}
+
+.indent3 {
+  margin-left: 3rem;
+}
+
+.indent4 {
+  margin-left: 4rem;
+}
+
+.indent5 {
+  margin-left: 5rem;
+}
+
+.indent6 {
+  margin-left: 6rem;
+}

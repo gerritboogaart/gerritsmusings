@@ -1,0 +1,85 @@
+.blocks {
+  padding: 20px;
+}
+
+.container {
+  margin: 3rem;
+  display: flex;
+}
+
+.field {
+  width: 36.2rem;
+  height: 20rem;
+  border: 1px solid lightgrey;
+  border-top: none;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.block {
+  position: absolute;
+  border: 1px solid lightgrey;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 7px;
+  opacity: .5;
+  cursor: pointer;
+}
+
+.boston {
+  opacity: 1!important;
+  cursor: default;
+  background: url('../../../resources/boston.png')!important;
+}
+
+/* .block:hover {
+  opacity: 1!important;
+} */
+
+.reset-holder {
+  display: inline-flex;
+  align-items: flex-end;
+  margin-left: 2rem;
+}
+
+.reset-button {
+  color: gray;
+  background: silver;
+  width: 10rem;
+  line-height: 2rem;
+  border: 1px solid silver;
+  cursor: pointer;
+  opacity: .6;
+  margin-left: 2rem;
+}
+
+.reset-button-active {
+  color:white;
+  background: gray;
+  width: 10rem;
+  line-height: 2rem;
+  border: 1px solid silver;
+  cursor: pointer;
+  opacity: .6;
+  margin-left: 2rem;
+}
+
+.reset-button:hover {
+  background: white;
+  color: darkslategray;
+}
+
+.reset-button:focus,  .reset-button:active, .reset-button:visited, .reset-button-active:focus, .reset-button-active:active, .reset-button-active:visited {
+outline: none!important;
+}
+
+.congrats {
+  text-align: center;
+  height: 100%;
+  font-size: 2rem;
+  padding-top: 6rem;
+  background: cadetblue;
+  color: yellow;
+  font-style: oblique;
+}

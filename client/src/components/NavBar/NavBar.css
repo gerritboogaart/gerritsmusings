@@ -1,0 +1,13 @@
+.nav-bar {
+  padding: 1rem 8rem;
+  text-align: right;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  height: 3rem;
+  background: #fff;
+}
+
+a:active {
+  font-weight: bolder;
+}

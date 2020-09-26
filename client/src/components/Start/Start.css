@@ -1,0 +1,50 @@
+.main-page {
+  margin: 5rem;
+  font-size: 1.2rem;
+}
+
+.text-main-page {
+  padding: 2rem;
+
+}
+
+.single-card {
+  margin-left: 2rem;;
+
+}
+
+
+.form-card {
+  background: url('../../resources/form.png')!important;
+  background-repeat: no-repeat!important;;
+  background-size: contain!important;
+  height: 9rem;
+}
+
+.blocks-card {
+  background: url('../../resources/blocks.png')!important;
+  background-repeat: no-repeat!important;;
+  background-size: contain!important;
+  height: 9rem;
+}
+
+.cards-card {
+  background: url('../../resources/cards.png')!important;
+  background-repeat: no-repeat!important;;
+  background-size: contain!important;
+  height: 9rem;
+}
+
+.blog-card {
+  background: url('../../resources/blog.png')!important;
+  background-repeat: no-repeat!important;;
+  background-size: contain!important;
+  height: 9rem;
+}
+
+.card-holder {
+  display: flex;
+  min-height: 40rem;
+}
+
+

@@ -1,0 +1,64 @@
+.home {
+  margin: 2rem;
+}
+
+.top-nav {
+  height: 6.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.form {
+  height: 25rem;
+  width: 80vw;
+  margin: auto;
+  background: light-grey;
+  border: 1px solid grey;
+  border-radius: 2rem;
+}
+
+.form-items {
+  display: inline-block;
+  margin: 0 5rem;
+  background: grey;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  border: 1px solid darkgray;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+li {
+  margin: 2rem;
+  list-style-type: none!important;
+}
+
+.bottom-nav {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.form-input {
+  background: url("../../resources/input.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid lightgrey;
+  width: 10rem;
+  height: 3rem;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+
+.form-text-area {
+  background: url("../../resources/input.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid lightgrey;
+  width: 10rem;
+  height: 3rem;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}

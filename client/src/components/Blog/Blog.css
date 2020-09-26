@@ -1,0 +1,48 @@
+.blog-page {
+  margin: 2rem;
+  position: absolute;
+  top: 3rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.blog-entry {
+  width: 75vw;
+  border: 1px solid lightgrey;
+  box-shadow: 5px 5px #fafafb;
+  padding: 1rem 1rem 10rem 1rem;
+}
+
+.code-block {
+  width: 90%;
+  padding: 1rem;
+  margin: .7rem auto;
+  background: #0000009c;
+  color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+
+}
+
+.code-block p {
+  margin-bottom: .45rem;
+  font-family: monospace;
+}
+
+.blog-text {
+  padding: 0 5rem;
+}
+
+li {
+  color: grey;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.blog-date {
+  color: grey;
+  font-size: .8rem;
+  text-align: right;
+}
