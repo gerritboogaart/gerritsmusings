@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { AreaChart, linearGradient, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
-import Hourly from './Components/Hourly/Hourly';
+import Hourly from '../Hourly/Hourly';
 import { calcTemp, calcAmPm, renderToday } from './Utils/Temperature';
 import { DAYS } from './Constants/constants';
 import { clone } from 'lodash';
