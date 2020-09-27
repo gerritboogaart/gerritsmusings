@@ -48,6 +48,13 @@
   font-size: .75rem;
 }
 
+.topnav {
+  position: absolute;
+  top: 1rem;
+  z-index: 2001;
+  left: 8rem;
+  display: flex;
+}
 
 
 :focus {
@@ -107,9 +114,9 @@ flex: 1;
 
 .nav-buttons {
   position: relative;
-  top: -16rem;
-  left: -2rem;
-  z-index: 3000;
+  top: -262px;
+  left: -39px;
+  z-index: 2000;
 }
 
 .location-ul {
@@ -134,7 +141,7 @@ button {
 }
 
 .temp-button {
-  font-size: 1.8rem;
+  font-size: 31px;
   font-weight: 600;
   /* border-radius: 50%; */
   /* background: darkblue; */

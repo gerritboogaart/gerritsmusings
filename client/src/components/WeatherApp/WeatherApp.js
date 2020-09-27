@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { AreaChart, linearGradient, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
 import Hourly from '../Hourly/Hourly';
+import { Icon, Input, Button } from 'semantic-ui-react';
 import { calcTemp, calcAmPm, renderToday } from '../../Utils/Temperature';
 import { DAYS } from '../../Constants/constants';
 import { MOCK } from '../../Constants/mockdata';
@@ -43,7 +44,8 @@ class WeatherApp extends Component {
       location: 'vabeach',
       locations: locations,
       loading: false,
-      place: ''
+      place: '',
+      type: 'forecast'
     };
   }
 
@@ -195,7 +197,11 @@ class WeatherApp extends Component {
     if (value && value.length > 1) this.setState({ place: value });
   }
 
-  lookupplace = () => {
+  lookupcheck = (e) => {
+    if (e.key === 'Enter') this.lookupplace();
+  }
+
+  lookupplace = (e) => {
     const { place, loc_uri, locations } = this.state;
     const uriPlace = encodeURI(place);
     const url = `${loc_uri}${uriPlace}`;
@@ -223,17 +229,95 @@ class WeatherApp extends Component {
       })
   }
 
-  render() {
+  renderForecast = () => {
+    return (
+      <div className='daysforcast'>
+        {this.renderDays()}
+      </div>
+    )
+  }
+
+  renderTypeGraph = () => {
+    return (
+      <div className='graph'>
+        {this.renderGraphs()}
+      </div>
+    )
+  }
+
+  renderTypeTable = () => {
     const { response, loading, temp } = this.state;
+    return (
+      <div className='hours-holder'>
+        <Hourly hourly={response.hourly} loading={loading} tempType={temp} />
+      </div>
+    )
+  }
+
+  renderType = () => {
+    switch (this.state.type) {
+      case 'forecast':
+        return this.renderForecast();
+        break;
+      case 'graph':
+        return this.renderTypeGraph();
+        break;
+      case 'table':
+        return this.renderTypeTable();
+        break;
+      default:
+        return this.renderForecast();
+    }
+  }
+
+  render() {
+    const { response, loading } = this.state;
     return (
       <div className='weatherWeatherApp'>
         {response && !loading
           ?
           <div>
             <div className='topnav'>
-              <input name='place' onChange={this.setlookupplace}></input><button onClick={() => this.lookupplace()}>Find new city</button>
+              {/* <input name='place' onChange={this.setlookupplace}></input><button onClick={() => this.lookupplace()}>Find new city</button> */}
+              <Input
+                icon
+                onChange={this.setlookupplace}
+                onKeyPress={this.lookupcheck}
+                placeholder='Search...'
+                style={{ marginRight: '3rem' }}
+              >
+                <input />
+                <Icon
+                  link
+                  name='search'
+                  onClick={() => this.lookupplace()}
+                />
+              </Input>
+
+              <div className='graph-options'>
+                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'forecast' })}>
+                  Forecast
+                  <Icon name='calendar alternate' />
+                </Button>
+                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'graph' })}>
+                  Graph
+                  <Icon name='area graph' />
+                </Button>
+                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'table' })}>
+                  Table
+                  <Icon name='table' />
+                </Button>
+              </div>
+
+              {/* <Input
+
+                icon={{ name: 'search', circular: true, link: true }}
+                placeholder='Search...'
+                onKeyPress={this.lookupcheck}
+                // value={this.state.place}
+              /> */}
             </div>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', paddingTop: '3rem' }}>
               <div className='response'>
                 {this.getTemp()}
                 <p></p>
@@ -244,19 +328,10 @@ class WeatherApp extends Component {
                   </ul></div>
                 </div>
               </div>
-              <div className='daysforcast'>
-                {this.renderDays()}
-              </div>
+              {this.renderType()}
             </div>
-            <div className='bottom-info'>
-              <div className='graph'>
-                {this.renderGraphs()}
-              </div>
 
-            </div>
-            <div className='hours-holder'>
-              <Hourly hourly={response.hourly} loading={loading} tempType={temp} />
-            </div>
+
           </div>
           : <p>Loading...</p>}
       </div>
