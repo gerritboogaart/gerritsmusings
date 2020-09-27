@@ -17,8 +17,7 @@
 }
 
 .response {
-  width: 18rem;
-  max-height: 14rem;
+  width: 18.4rem;
   padding: 1rem;
   text-align: left;
   border-right: 1px solid lightgrey;
@@ -52,7 +51,7 @@
   position: absolute;
   top: 1rem;
   z-index: 2001;
-  left: 8rem;
+  left: 4rem;
   display: flex;
 }
 

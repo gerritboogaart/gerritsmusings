@@ -133,7 +133,7 @@ class WeatherApp extends Component {
         <div key={i} className='day-holder'>
           <div className='top-day'>
             <ul className='day-ul'>
-              <li>{renderToday(time, i)}</li>
+              <li style={{fontWeight: 'bold'}}>{renderToday(time, i)}</li>
               <li><span className='summary'>{day.summary}</span></li>
             </ul>
           </div>
@@ -174,12 +174,12 @@ class WeatherApp extends Component {
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+            <stop offset="5%" stopColor="#11a9c2" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="#11a9c2" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+            <stop offset="5%" stopColor="#235c67" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="#235c67" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis dataKey="useDay" />
@@ -220,7 +220,6 @@ class WeatherApp extends Component {
               lat: location.lat
             }
           }
-          console.log(locations);
           this.setState({ location: name, locations: newLocs }, () => this.getWeatherUpdate());
         }
       })
@@ -258,13 +257,10 @@ class WeatherApp extends Component {
     switch (this.state.type) {
       case 'forecast':
         return this.renderForecast();
-        break;
       case 'graph':
         return this.renderTypeGraph();
-        break;
       case 'table':
         return this.renderTypeTable();
-        break;
       default:
         return this.renderForecast();
     }
@@ -284,7 +280,7 @@ class WeatherApp extends Component {
                 onChange={this.setlookupplace}
                 onKeyPress={this.lookupcheck}
                 placeholder='Search...'
-                style={{ marginRight: '3rem' }}
+                style={{ marginRight: '1rem' }}
               >
                 <input />
                 <Icon
