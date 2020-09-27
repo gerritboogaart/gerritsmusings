@@ -162,7 +162,7 @@ button {
 }
 
 .hourly-temp {
-  display: inline-block;
+  display: none;
   width: 32px;
   height: 27px;
   background-size: cover;
