@@ -26,7 +26,7 @@ const CARDS = {
     url: '/blog',
     className: 'blog-card',
     header: 'My Blog',
-    description: 'read my musings'
+    description: 'Read my musings'
   }
 }
 
@@ -55,10 +55,10 @@ const createCard = type => {
 export const Start = () => {
   return (
     <div className='main-page'>
-      Gerrit Boogaart
+       <Link to='/about' >Gerrit Boogaart</Link>
         <br />
       <div className='text-main-page'>
-        Welcome to my portfolio. This site is written in React.
+        Welcome to my portfolio. This site is written in React using hooks and sometimes context.<br />
         </div>
       <div className='card-holder'>
       <Card.Group>

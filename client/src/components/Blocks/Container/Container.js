@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { get, isArray, map, clone, filter, find, forEach } from 'lodash';
+import { Icon } from 'semantic-ui-react';
 import './Container.css';
 
 const COLORS = [
@@ -14,7 +15,7 @@ const ROWS = [352, 302, 252, 202, 152];
 const R = { 352: 0, 302: 1, 252: 2, 202: 3, 152: 4 };
 
 export class Container extends Component {
-  state = { blocks: [], game: 'advanced', step: START, left: 50, hiscore: 1000 };
+  state = { blocks: [], game: 'advanced', step: START, left: 50, hiscore: 1000, showHelp: false };
 
   componentDidMount() {
     this.resetBlocks();
@@ -322,19 +323,11 @@ export class Container extends Component {
   }
 
   render() {
-    const { game } = this.state;
+    const { game, showHelp } = this.state;
     const score = this.displayHiscore();
     return (
       <div className='blocks'>
-        <div>
-          Step number: {this.state.step}
-          <span style={{ display: 'inline-block', marginLeft: '2rem' }}>
-            Blocks Left: {this.state.left}
-          </span>
-          <span style={{ display: 'inline-block', marginLeft: '2rem' }}>
-            High Score: {score}
-          </span>
-        </div>
+
         <div className='container'>
           <div className='field'>
             {this.drawBlocks()}
@@ -345,8 +338,31 @@ export class Container extends Component {
             <button className={game === 'advanced' ? 'reset-button-active' : 'reset-button'} onClick={() => this.setState({ game: 'advanced' })}>advanced</button>
           </div>
         </div>
+        <div className='block-numbers'>
+          Step number: {this.state.step}
+          <span style={{ display: 'inline-block', marginLeft: '2rem' }}>
+            Blocks Left: {this.state.left}
+          </span>
+          <span style={{ display: 'inline-block', marginLeft: '2rem' }}>
+            High Score: {score}
+          </span>
+        </div>
+        <div className='help-button'>
+          <Icon name='question circle outline ' color='grey' onClick={() => this.setState({ showHelp: !showHelp })} />
+        </div>
+        { showHelp && (
+          <div className='help-text'>
+            <Icon link claseName='help-text-close' name='close' onClick={() => this.setState({ showHelp: false })} />
+          Click on a block and all the blocks with the same color adjecent dissapear, and all the blocks above the once that are gone fall down.<br />
+          Remove all blocks in a row gives you a suprise.<br />
+          Clear all rows as fast as you can.
+          </div>
+        )
+
+        }
 
       </div>
+
 
 
     );

@@ -190,3 +190,7 @@ button {
 .right {
  flex: 1;
 }
+
+.graph-options {
+  opacity: .4;
+}

@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
 import './NavBar.css';
@@ -20,7 +20,6 @@ export const NavBar = () => {
       });
     }
     const path = window.location.pathname;
-    console.log(path, `/${link}`, path === `/${link}`)
     return {color: 'gray', fontWeight: path === `/${link}` ? 'bold' : 'normal'}
   }
   return (
@@ -31,6 +30,7 @@ export const NavBar = () => {
         <List.Item> <Link onClick={() => setActive('forms')} style={setClass('forms')}  to="/forms">Form Builder</Link> </List.Item>
         <List.Item> <Link onClick={() => setActive('blocks')} style={setClass('blocks')}  to="/blocks">Blocks Game</Link> </List.Item>
         <List.Item> <Link onClick={() => setActive('weather')} style={setClass('weather')}  to="/weather">Weather App</Link> </List.Item>
+        <List.Item> <Link onClick={() => setActive('about')} style={setClass('about')}  to="/about">About</Link> </List.Item>
       </List>
     </div>
   )

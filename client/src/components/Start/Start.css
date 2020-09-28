@@ -3,6 +3,9 @@
   font-size: 1.2rem;
 }
 
+.main-page a {
+  color: #6e6e6e!important;
+}
 .text-main-page {
   padding: 2rem;
 

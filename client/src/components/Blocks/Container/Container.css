@@ -1,5 +1,6 @@
 .blocks {
   padding: 20px;
+  margin-top: 18px;
 }
 
 .container {
@@ -82,4 +83,32 @@ outline: none!important;
   background: cadetblue;
   color: yellow;
   font-style: oblique;
+}
+
+.block-numbers {
+  position: relative;
+  top: -2rem;
+  left: 3rem;
+  color: #b5acac;
+}
+
+.help-button {
+  position: relative;
+  top: -24rem;
+  left: 40rem;
+  cursor: pointer;
+  opacity: .4;
+}
+
+.help-text {
+  position: relative;
+  top: -25.5rem;
+  left: 43rem;
+  color: grey;
+  width: 33rem;
+}
+
+.help-text-close {
+  cursor: pointer;
+  color: lightgrey;
 }

@@ -292,16 +292,17 @@ class WeatherApp extends Component {
 
               <div className='graph-options'>
                 <Button icon labelPosition='right' onClick={() => this.setState({ type: 'forecast' })}>
-                  Forecast
+                  10 Day Forecast
                   <Icon name='calendar alternate' />
                 </Button>
-                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'graph' })}>
-                  Graph
-                  <Icon name='area graph' />
-                </Button>
+
                 <Button icon labelPosition='right' onClick={() => this.setState({ type: 'table' })}>
-                  Table
+                  Hourly Forecast
                   <Icon name='table' />
+                </Button>
+                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'graph' })}>
+                  10 Day Graph
+                  <Icon name='area graph' />
                 </Button>
               </div>
 
