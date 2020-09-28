@@ -72,7 +72,7 @@
 }
 
 .partly-cloudy-night {
-  background: url('../../Public/partly-cloudy-night.png');
+  background: url('weather.jpg') 1124px 553px;
 }
 
 .sunny, .clear-day {
@@ -80,7 +80,7 @@
 }
 
 .clear-night {
-  background: url('../../Public/clear-night.png');
+  background: url('weather.jpg') 1400px 553px;
 }
 
 .rain {
@@ -88,19 +88,19 @@
 }
 
 .cloudy {
-  background: url('clowdy.png');
+  background: url('weather.jpg') 557px 1153px;
 }
 
 .snow {
-  background: url('snow.png');
+  background: url('weather.jpg') 302px 553px;
 }
 
 .thunder {
-  background: url('thunder.png');
+  background: url('weather.jpg') 839px 1153px;
 }
 
 .wind {
-  background: url('windy.png');
+  background: url('weather.jpg') 561px 553px;
 }
 
 .perc {

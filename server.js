@@ -7,11 +7,11 @@ const locs = require('./locations.json');
 const port = process.env.PORT || 5000;
 
 const weather = 'https://api.darksky.net/forecast/734380008b4832fb5da71a68d80737d4/';
-const test = 'https://api.darksky.net/forecast/734380008b4832fb5da71a68d80737d4/36.8506,-75.9779';
+
 
 const location = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const api = 'AIzaSyC1dEid2g2vnR4-hHJvN_ZbNN1o9vOUwFI';
-
+const location_api = '7c5f288e50b73b';
 
 
 // app.use(express.static(path.join(__dirname, 'client/build')));
