@@ -8,25 +8,29 @@ const CARDS = {
     url: '/forms',
     className: 'form-card',
     header: 'Form Builder',
-    description: 'Create and test your form layouts'
+    description: 'Create and test your form layouts',
+    active: true
   },
   blocks: {
     url: '/blocks',
     className: 'blocks-card',
     header: 'Falling blocks',
-    description: 'See blocks fall as you click them away'
+    description: 'See blocks fall as you click them away',
+    active: true
   },
   cards: {
     url: '/weather',
     className: 'weather-card',
     header: 'Weather App',
-    description: 'Check your local weather'
+    description: 'Check your local weather',
+    active: true
   },
   blog: {
     url: '/blog',
     className: 'blog-card',
     header: 'My Blog',
-    description: 'Read my musings'
+    description: 'Read my musings',
+    active: true
   }
 }
 
@@ -63,7 +67,7 @@ export const Start = () => {
       <div className='card-holder'>
       <Card.Group>
         {createCard('blog')}
-        {createCard('forms')}
+        {/* {createCard('forms')} */}
         {createCard('blocks')}
         {createCard('cards')}
       </Card.Group>
