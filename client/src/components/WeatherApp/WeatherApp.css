@@ -149,10 +149,8 @@ button {
 }
 
 .hours-holder {
-  flex: 2;
-  max-height: 20rem;
-  margin-left: 2rem;
-  overflow: scroll;
+    max-height: 20rem;
+    margin-left: 2rem;
 }
 
 .bottom-info {
