@@ -13,6 +13,18 @@ const location = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const api = 'AIzaSyC1dEid2g2vnR4-hHJvN_ZbNN1o9vOUwFI';
 const location_api = '7c5f288e50b73b';
 
+const db_user = 'gerritsmusings';
+const db_key = 'dMFmaSfbJ0rfmt0T'
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://gerritsmusings:<password>@musings0.iyrqu.mongodb.net/<dbname>?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
 
 // app.use(express.static(path.join(__dirname, 'client/build')));
 
