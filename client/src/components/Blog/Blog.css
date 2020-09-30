@@ -12,13 +12,12 @@
   width: 75vw;
   border: 1px solid lightgrey;
   box-shadow: 5px 5px #fafafb;
-  padding: 1rem 1rem 10rem 1rem;
+  padding: 1rem 1rem 10rem 4rem;
 }
 
 .code-block {
-  width: 90%;
   padding: 1rem;
-  margin: .7rem auto;
+  margin: .7rem 0rem;
   background: #0000009c;
   color: white;
   border: 1px solid lightgrey;
@@ -31,8 +30,8 @@
   font-family: monospace;
 }
 
-.blog-text {
-  padding: 0 5rem;
+.blog-main-text {
+  width: 90%;
 }
 
 .blog-page li {

@@ -3,6 +3,7 @@ import React from 'react';
 export default (
   <React.Fragment>
     <div className='blog-date'>2020-09-25</div>
+    <div className='blog-main-text'>
       <h1>Filter, Reduce, and Map</h1>
     Even though I love to use lodash' filter, map, and reduce, if only because you can hand these wonderful functions an object instead of only an array.
     But sometimes in life you have no choice, and let's face it: working in pure JS is awesome.
@@ -65,14 +66,15 @@ export default (
         <p>{`const obj = { Potato: 1, Apple: 2, Banana: 3 }`}</p>
         <p>{`const pricing = { Potato: 0.25, Apple: 0.75, Banana: 1 }`}</p>
         <p>{`return Object.entries(obj).reduce(acc, [key, value]) => {`}</p>
-        <p className='indent1'>{`if ( key.toLowerCase().includes('p') && pricing[key]) acc.push(<li>{key} - $\${value * pricing[key]}</li>`}</p>
+        <p className='indent1'>{`if ( key.toLowerCase().includes('p') && pricing[key]) acc.push(<li>{key} - $ {value * pricing[key]}</li>)`}</p>
         <p className='indent1'>{`return acc`}</p>
         <p>{`}, [])`}</p>
     </div>
     which nicely returns a usable:
     <div className='code-block'>
-        <p>{`["<li>Potato - $0.25</li>", "<li>Apple - $1.5</li>"]`}</p>
+        <p>{`["<li>Potato - $ 0.25</li>", "<li>Apple - $ 1.5</li>"]`}</p>
     </div>
     <br />
+    </div>
 </React.Fragment>
 );

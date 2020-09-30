@@ -19,7 +19,7 @@ export default (
       Q: What was I trying to solve? A: What is all the Context fuzz about?
 
     <h5 className='blog-bold'>Context TLDR:</h5>
-      It's pretty cool, and once set up, it's pretty powerful. I', still not sure if it's better or worse than redux.
+      It's pretty cool, and once set up, it's pretty powerful. I am still not sure if it's better or worse than redux.
     <h5>React Context, the long answer</h5>
       How did I go about all this. First I knew I wanted a simple react app with two panels. One that lists the names: a simple array of objects with firstName, lastName, birth date, home town, and rating.
       Then i figured the list needs to be clickable so that when a person is clicked, it becomes selected, and the right panel will show a form with the attributes in inputs.
