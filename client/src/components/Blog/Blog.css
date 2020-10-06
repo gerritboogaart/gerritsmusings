@@ -15,21 +15,6 @@
   padding: 1rem 1rem 10rem 4rem;
 }
 
-.code-block {
-  padding: 1rem;
-  margin: .7rem 0rem;
-  background: #0000009c;
-  color: white;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-
-}
-
-.code-block p {
-  margin-bottom: .45rem;
-  font-family: monospace;
-}
-
 .blog-main-text {
   width: 90%;
 }

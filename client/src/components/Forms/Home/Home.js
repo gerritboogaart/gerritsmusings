@@ -11,7 +11,7 @@ export class Home extends Component {
   state = { form: [], parsing: false };
 
   componentDidMount() {
-    this.reuseForm();
+    // this.reuseForm();
   }
 
   handleChange = (e, {value, index, label}) =>  {
@@ -23,11 +23,11 @@ export class Home extends Component {
   }
 
 
-  addFormItem = (type, label) => {
+  addFormItem = (type, label, options) => {
     const { form } = this.state;
     // const i = form.length;
     // const newForm = { ...form, [`${type}${i + 1}`]: { type: type, default: '' } };
-    form.push({ type, default: '', label });
+    form.push({ type, default: '', label, options });
     this.setState({ form });
   };
 
@@ -49,6 +49,12 @@ export class Home extends Component {
     this.setState({parsing: true});
   }
 
+  removeEntry = (index) => {
+    const { form } = this.state;
+    form.splice(index, 1);
+    this.setState({ form });
+  }
+
   render() {
     const form = get(this.state, 'form');
     return (
@@ -59,14 +65,14 @@ export class Home extends Component {
           <FormItems addFormItem={this.addFormItem} />
 
         </div>
-        <div className='form'>
-          <FormBuilder form={form} showResults={this.showResults} handleChange={this.handleChange} />
+        <div style={{width: '90%', margin: 'auto'}}>
+          <FormBuilder removeEntry={this.removeEntry} form={form} showResults={this.showResults} handleChange={this.handleChange} />
         </div>
-        <div className='bottom-nav'>
+        {/* <div className='bottom-nav'>
         <Button onClick={this.saveform}>Save Form</Button>
         <Button onClick={this.reuseForm}>use Saved Form</Button>
         <Button onClick={this.resetCurrentForm}>Reset Form</Button>
-        </div>
+        </div> */}
         {
           !!this.state.parsing &&
             ( <div className='result-form'>

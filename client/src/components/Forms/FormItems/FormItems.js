@@ -8,20 +8,22 @@ import { Button, Icon, Modal, Input, TextArea } from 'semantic-ui-react';
 //   localStorage.setItem('form', JSON.stringify(newForm));
 // }
 
+const initialState = { textmodal: false, inputmodal: false, ddmodal: false, textlabel: undefined, textPlaceHolder: undefined, ddvalu: undefined };
+
 export class FormItems extends Component {
 
   state = { textmodal: false, inputmodal: false, ddmodal: false };
 
   handleOpen = (type) => {
     switch (type) {
-      case 'text': 
-        this.setState({ textmodal: true });
+      case 'text':
+        this.setState({ ...initialState, textmodal: true });
         break;
-      case 'input': 
-        this.setState({ inputmodal: true });
+      case 'input':
+        this.setState({ ...initialState, inputmodal: true });
         break;
-      case 'dropdown': 
-        this.setState({ ddmodal: true });
+      case 'dropdown':
+        this.setState({ ...initialState, ddmodal: true });
         break;
       default: return;
     }
@@ -29,23 +31,28 @@ export class FormItems extends Component {
 
   changeLabel = (e, { value }) => this.setState({ textlabel: value });
 
+  addDropDownOptions = (e) => {
+    const value = e.target.value;
+    this.setState({ddvalue: value.replace(/,\s/g, ',').split(',')})
+  }
+
+  changePlaceHolderText = (e, {value}) => this.setState({ textPlaceHolder: value });
+
   addText = () => {
     this.props.addFormItem('input', this.state.textlabel);
     this.handleClose();
   }
 
   addTextArea = () => {
-    this.props.addFormItem('text', this.state.textlabel);
+    this.props.addFormItem('text', this.state.textlabel, this.state.textPlaceHolder);
     this.handleClose();
   }
   addDropDown = () => {
-    this.props.addFormItem('dropdown', this.state.textlabel);
+    this.props.addFormItem('dropdown', this.state.textlabel, this.state.ddvalue);
     this.handleClose();
   }
 
   handleClose = () => this.setState({ textmodal: false, inputmodal: false, ddmodal: false });
-
-
 
   handleStart = () => console.log('start');
 
@@ -76,7 +83,8 @@ export class FormItems extends Component {
           size='small'
         >
           <Modal.Content>
-            please give a label: <Input name='lextlabel' onChange={this.changeLabel} label='please give a label to the text area' />
+            <li><Input name='lextlabel' onChange={this.changeLabel} label='please give a label to the text area' /></li>
+            <li><Input name='lextlabel' onChange={this.changePlaceHolderText} label='please give a placeholder text' /></li>
           </Modal.Content>
           <Modal.Actions>
             <Button color='green' onClick={this.addTextArea} inverted>
@@ -92,10 +100,10 @@ export class FormItems extends Component {
           size='small'
         >
           <Modal.Content>
-            please give a label: 
+            please give a label:
               <Input name='lextlabel' onChange={this.changeLabel} label='please give a label to the dropdown' />
               <br />
-              <TextArea name='' />
+              <TextArea name='' onChange={(e) => this.addDropDownOptions(e)} />
           </Modal.Content>
           <Modal.Actions>
             <Button color='green' onClick={this.addDropDown} inverted>

@@ -10,3 +10,42 @@ html, body {
   top: -2rem;
   font-family: monospace;
 }
+
+.indent1 {
+  margin-left: 1rem;
+}
+
+.indent2 {
+  margin-left: 2rem;
+}
+
+.indent3 {
+  margin-left: 3rem;
+}
+
+.indent4 {
+  margin-left: 4rem;
+}
+
+.indent5 {
+  margin-left: 5rem;
+}
+
+.indent6 {
+  margin-left: 6rem;
+}
+
+.code-block {
+  padding: 1rem;
+  margin: .7rem 0rem;
+  background: #0000009c;
+  color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+
+}
+
+.code-block p {
+  margin-bottom: .45rem;
+  font-family: monospace;
+}
