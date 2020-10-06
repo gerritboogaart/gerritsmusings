@@ -279,7 +279,7 @@ class WeatherApp extends Component {
                 icon
                 onChange={this.setlookupplace}
                 onKeyPress={this.lookupcheck}
-                placeholder='Search...'
+                placeholder='Enter city name or zip code'
                 style={{ marginRight: '1rem' }}
               >
                 <input />
