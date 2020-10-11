@@ -265,13 +265,13 @@ class WeatherApp extends Component {
         return this.renderForecast();
     }
   }
-  getSrcUrl = () => {
-    const base = 'https://www.google.com/maps/embed/v1/view?key=';
-    const lat = this.state.lat || '36.8506';
-    const long = this.state.long || '-75.9779';
-    const api = 'AIzaSyB1HZVz7L6ls6xNQsNxU-j7-MiaGZvgeAo';
-    return base + api + '&center=' + lat + ',' + long + '&&zoom=10';
-  }
+  // getSrcUrl = () => {
+  //   const base = 'https://www.google.com/maps/embed/v1/view?key=';
+  //   const lat = this.state.lat || '36.8506';
+  //   const long = this.state.long || '-75.9779';
+  //   const api = 'AIzaSyB1HZVz7L6ls6xNQsNxU-j7-MiaGZvgeAo';
+  //   return base + api + '&center=' + lat + ',' + long + '&&zoom=10';
+  // }
 
   render() {
     const { response, loading } = this.state;
@@ -333,14 +333,14 @@ class WeatherApp extends Component {
               </div>
               {this.renderType()}
             </div>
-            <iframe
+            {/* <iframe
               style={{ margin: '-1rem 0 0 -22rem' }}
               width="600"
               height="450"
               frameBorder="0"
               title="weather map"
               src={this.getSrcUrl()} >
-            </iframe>
+            </iframe> */}
             {/* <div className='google-map'>
               {this.getSrcUrl()}
             </div> */}

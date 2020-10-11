@@ -348,7 +348,7 @@ export class Container extends Component {
           </span>
         </div>
         <div className='help-button'>
-          <Icon name='question circle outline ' color='grey' onClick={() => this.setState({ showHelp: !showHelp })} />
+          <Icon name='question circle outline' color='grey' onClick={() => this.setState({ showHelp: !showHelp })} />
         </div>
         { showHelp && (
           <div className='help-text'>
