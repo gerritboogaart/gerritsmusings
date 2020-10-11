@@ -1,9 +1,22 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from 'semantic-ui-react';
 import './Photos.css';
 
 export const Photos = () => {
   const [photo, setPhoto] = useState(1);
+  const [mobile, setMobile] = useState(window.navigator.userAgent);
+  const [isMobile, setIsMobile] = useState(false);
+  const [size, setSize] = useState([500, 400]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      console.log(mobile);
+      const mob = mobile.includes('iPhone') || mobile.includes('Android');
+      setIsMobile(mob);
+      const resize = mob ? [345, 350] : [500, 400];
+      setSize(resize);
+    }
+  }, [mobile, isMobile])
 
   const moveLeft = () => setPhoto(photo - 1 < 1 ? 7 : photo - 1);
 
@@ -37,9 +50,9 @@ export const Photos = () => {
           </div>
           <div className='right-side'>
           <iframe
-              width="500"
+              width={size[0]}
               title="Where is this picture taken"
-              height="400"
+              height={size[1]}
               frameBorder="0"
               src={getSrcUrl()} >
             </iframe>

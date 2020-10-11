@@ -64,6 +64,7 @@ const createCard = type => {
 }
 
 export const Start = () => {
+
   return (
     <div className='main-page'>
        <Link to='/about' >Gerrit Boogaart</Link>

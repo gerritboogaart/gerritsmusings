@@ -11,7 +11,7 @@
 .photo-columns {
   display: flex;
   width: 100vw;
-  height: 400px;
+  /* height: 400px; */
   margin: 5rem 0;
 }
 .photo-holder {
@@ -22,6 +22,7 @@
 
 .right-side {
   flex: 5;
+  height: 400px;
 }
 
 .photo {
