@@ -4,6 +4,8 @@
 
 .photos-text {
   margin-left: 10rem;
+  font-size: 12px;
+  color: grey;
 }
 
 .photo-columns {

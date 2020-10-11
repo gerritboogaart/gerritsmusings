@@ -28,9 +28,7 @@ export const Photos = () => {
 
   return (
     <div className='photos-page'>
-        <div className='photos-text'>
-          All pictures are my personal photos captured on either my wife's iPhone 4s / 6s , or my Samasung Galaxy S9.
-        </div>
+
         <div className='photo-columns'>
         <div className='photo-holder'>
           <div className={`photo photo${photo}`}></div>
@@ -46,6 +44,9 @@ export const Photos = () => {
               src={getSrcUrl()} >
             </iframe>
           </div>
+        </div>
+        <div className='photos-text'>
+          All pictures are my personal photos captured on either my wife's iPhone 6s , or my Samsung Galaxy S9.
         </div>
 
     </div>
