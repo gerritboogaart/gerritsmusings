@@ -192,3 +192,34 @@ button {
 .graph-options {
   opacity: .4;
 }
+
+@media screen and (max-width: 600px)
+{
+  .graph-options {
+    width: 100vw;
+  }
+  .response {
+    width: 8.4rem;
+  }
+  .weather {
+    width: 129px;
+    height: 113px;
+    margin: auto;
+  }
+  .top-day {
+    height: 4rem;
+    overflow: hidden;
+}
+  .day-holder {
+        /* background: lightblue; */
+        display: inline-block;
+        width: 9rem;
+        margin-left: 0rem;
+        /* height: 23rem; */
+        /* margin-left: 1rem; */
+        /* vertical-align: top; */
+        /* padding: 0.2rem; */
+        /* border-radius: 6px; */
+        border: 1px solid lightgray;
+  }
+}
