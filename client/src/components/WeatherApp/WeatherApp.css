@@ -199,11 +199,11 @@ button {
     width: 100vw;
   }
   .response {
-    width: 8.4rem;
+    width: 8.2rem;
   }
   .weather {
-    width: 129px;
-    height: 113px;
+    width: 109px;
+    height: 103px;
     margin: auto;
   }
   .top-day {
@@ -213,8 +213,9 @@ button {
   .day-holder {
         /* background: lightblue; */
         display: inline-block;
-        width: 9rem;
+        width: 8.2rem;
         margin-left: 0rem;
+        height: 19rem;
         /* height: 23rem; */
         /* margin-left: 1rem; */
         /* vertical-align: top; */
