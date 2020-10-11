@@ -6,7 +6,7 @@ export default (
   <React.Fragment>
     <div className='blog-part'>
       <div className='blog-date'>2020-08-23</div>
-      <h1>And example of how to use the ReactJS Context api</h1>
+      <h1>An example of how to use the ReactJS Context api</h1>
       These are my musings on Context in react
     <hr />
       In here I will investigate the use of React Context. When to use it, and how otherwise to do it.
