@@ -20,6 +20,13 @@
   margin-left: 2rem;;
 }
 
+@media screen and (max-width: 600px)
+{
+  .single-card {
+    margin: 1rem;
+  }
+
+}
 
 .form-card {
   background: url('../../resources/form.png')!important;

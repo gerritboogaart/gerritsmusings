@@ -1,14 +1,33 @@
-.nav-bar {
-  padding: 1rem 8rem;
-  text-align: right;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  height: 3rem;
-  background: #fff;
-  z-index: 2000;
+  .nav-bar {
+    padding: 1rem 8rem;
+    text-align: right;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    height: 3rem;
+    background: #fff;
+    z-index: 2000;
+    color: red;
 }
+
 
 a:active {
   font-weight: bolder;
+}
+
+@media screen and (max-width: 600px)
+{
+/* CSS Document */
+.nav-bar {
+  /* padding: 1rem 8rem; */
+
+  text-align: left;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 2000;
+  display: inline;
+  padding: .5rem;
+
+}
 }

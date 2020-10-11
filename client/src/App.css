@@ -49,3 +49,10 @@ html, body {
   margin-bottom: .45rem;
   font-family: monospace;
 }
+
+@media screen and (min-width: 980px)
+{
+/* CSS Document */
+}
+
+
