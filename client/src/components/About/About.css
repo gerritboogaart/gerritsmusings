@@ -13,3 +13,11 @@
   font-family: monospace;
   font-size: large;
 }
+
+@media screen and (max-width: 600px)
+{
+  .about-page {
+    margin: 2rem;
+    font-size: 1rem;
+  }
+}

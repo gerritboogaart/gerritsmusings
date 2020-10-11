@@ -22,9 +22,13 @@ a:active {
     text-align: left;
     position: sticky;
     top: 0;
-    background: #f9e9de;
+    background: #f18c48;
     z-index: 2000;
     padding: .5rem;
     height: 3rem!important;
+  }
+
+  .nav-bar a {
+    color: white!important;
   }
 }
