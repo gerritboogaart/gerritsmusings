@@ -14,7 +14,7 @@ const CARDS = {
   blocks: {
     url: '/blocks',
     className: 'blocks-card',
-    header: 'Falling blocks',
+    header: 'Falling Blocks',
     description: 'See blocks fall as you click them away',
     active: true
   },
