@@ -88,3 +88,44 @@
   opacity: .5!important;
 
 }
+
+@media screen and (max-width: 600px)
+{
+
+  .photos-page {
+    margin: 0.5rem;
+  }
+
+  .photo-columns {
+    flex-direction: column;
+  }
+
+  .photo-holder {
+    width: 100vw;
+    height: 90vw;
+  }
+  .photo {
+    margin: .5rem;
+  }
+
+  .right-side {
+    margin: 2rem .5rem;
+  }
+
+  .right-angle {
+    position: relative;
+    top: -13.5rem;
+    left: 22rem;
+    cursor: pointer;
+    opacity: .5!important;
+    color: white;
+  }
+  .left-angle {
+    position: relative;
+    top: -13.6rem;
+    left: -1rem;
+    cursor: pointer;
+    opacity: .5!important;
+    color: white;
+  }
+}
