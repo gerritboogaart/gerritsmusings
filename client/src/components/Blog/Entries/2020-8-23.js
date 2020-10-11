@@ -7,25 +7,26 @@ export default (
     <div className='blog-part'>
       <div className='blog-date'>2020-08-23</div>
       <h1>An example of how to use the ReactJS Context api</h1>
-      These are my musings on Context in react
+      These are my musings on Context in React.
     <hr />
-      In here I will investigate the use of React Context. When to use it, and how otherwise to do it.
-      I'm interested myself what I'll learn :)
+      In here I will investigate the use of React Context.
+      I'm interested in what I will learn :)
     <br />
-      I'm testing context  <Link style={{ color: 'blue' }} to="/examples">if you click this link</Link>. It actually works pretty well.
-      In this example I used context to simply update a person's attribute; when you click on a person, you can add / remove last name, birth date, edit the first name, or add a hometown.
-      For posterity you can add a rating, because Semantic is so cool. The birth date is a simplification of datepicker.
+      I'm testing Context  <Link style={{ color: 'blue' }} to="/examples">if you click this link</Link>.
+      It actually works pretty well.
+      In this example, I used context to update a person's attribute.  When you click on a person, you can update several fields and properties.
+      For posterity you can add a rating (because Semantic is so cool). The birth date is a simplification of datepicker.
     <br />
       Q: What was I trying to solve? A: What is all the Context fuzz about?
 
     <h5 className='blog-bold'>Context TLDR:</h5>
       It's pretty cool, and once set up, it's pretty powerful. I am still not sure if it's better or worse than redux.
     <h5>React Context, the long answer</h5>
-      How did I go about all this. First I knew I wanted a simple react app with two panels. One that lists the names: a simple array of objects with firstName, lastName, birth date, home town, and rating.
+      How did I go about all this? First I knew I wanted a simple react app with two panels. One that lists the names: a simple array of objects with firstName, lastName, birth date, home town, and rating.
       Then i figured the list needs to be clickable so that when a person is clicked, it becomes selected, and the right panel will show a form with the attributes in inputs.
       I wanted to achieve this without 'drilling' of props. In comes 'Context'. ReactJS has this thing called React.CreateContext() that I was happy to use.
   <br />
-      Start:
+      How to setup and use Context:
   <br />
       In your freshly created React app. Create a file called context.js (or whatever you think works well as a name).
 
@@ -50,8 +51,9 @@ export default (
       </div>
 
       <div className='blog-text'>
-        All your functions, or <span className='blog-bold'>actions</span> go in here. Then comes the whole point of the magic: you render this.props.children inside a wrapper. That's why stuff needs to get wrapped later.
-    Pro tip: don't forget <span className='blog-bold'>{`{this.props.children}`} cause nothing will be rendered in your child Component...</span>
+        All your functions, or <span className='blog-bold'>actions</span> go in here. When you have done this,  you get to the core of the magic: you render this.props.children inside a wrapper. That's why stuff needs to get wrapped later.
+        This will cause state to be updated and therefore, your keeps your page in the correct state, which is HUGE!
+        <br />Pro tip: don't forget <span className='blog-bold'>{`{this.props.children}`} cause nothing will be rendered in your child Component...</span>
       </div>
       <div className='code-block'>
         <p>{`render() {`}</p>
