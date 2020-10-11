@@ -9,6 +9,7 @@ import Examples from './components/Blog/Examples/Examples';
 import './App.css';
 import WeatherApp from './components/WeatherApp/WeatherApp';
 import { About } from './components/About/About';
+import { Photos } from './components/Photos/Photos';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/weather' render={() => <WeatherApp />} />
           <Route exact path='/blog' render={() => <Blog />} />
           <Route path='/about' render={() => <About />} />
+          <Route path='/photos' render={() => <Photos />} />
           <Route path='/examples' render={() => <Examples />} />
         </Switch>
       </React.Fragment>

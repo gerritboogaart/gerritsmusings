@@ -24,7 +24,14 @@ export const About = () => {
         Welcome to my portfolio. This site is written in React using hooks and sometimes context.<br />
         My hobbies are coding in JavaScript, ReactJS, NodeJS, and playing with CSS3, HTML5 and MySql.<br />
         My hobbies that don't involve a screen are my dog Boomer (a Boston Terrier), reading my kindle and indoor cycling.
-
+        <br />
+        <p />
+        <p>Favorite Quotes:</p>
+        <p />
+        <div className='quotes'>
+          <p>'I would love to change the world, but they won’t give me the source code'</p>
+          <p>'I write code, so my dog can have a better life'</p>
+        </div>
         </div>
         <div className='social-icons'>
           <Icon link size='big' className='social-links' name='linkedin' onClick={() => linking('linkedin')}/>

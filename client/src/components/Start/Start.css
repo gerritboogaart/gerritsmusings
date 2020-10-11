@@ -49,6 +49,13 @@
   height: 9rem;
 }
 
+.photos-card {
+  background: url('../../resources/photos.png')!important;
+  background-repeat: no-repeat!important;;
+  background-size: contain!important;
+  height: 9rem;
+}
+
 .card-holder {
   display: flex;
   min-height: 40rem;

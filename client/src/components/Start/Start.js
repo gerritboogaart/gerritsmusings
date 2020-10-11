@@ -31,6 +31,13 @@ const CARDS = {
     header: 'My Blog',
     description: 'Read my musings',
     active: true
+  },
+  photos: {
+    url: '/photos',
+    className: 'photos-card',
+    header: 'Photos',
+    description: 'My pictures and where I took them',
+    active: true
   }
 }
 
@@ -70,6 +77,7 @@ export const Start = () => {
         {/* {createCard('forms')} */}
         {createCard('blocks')}
         {createCard('cards')}
+        {createCard('photos')}
       </Card.Group>
       </div>
 

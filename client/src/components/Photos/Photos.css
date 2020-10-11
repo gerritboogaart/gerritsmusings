@@ -1,0 +1,88 @@
+.photos-page {
+  margin: 5rem;
+}
+
+.photos-text {
+  margin-left: 10rem;
+}
+
+.photo-columns {
+  display: flex;
+  width: 100vw;
+  height: 400px;
+  margin: 5rem 0;
+}
+.photo-holder {
+  height: 400px;
+  width: 400px;
+  flex: 5;
+}
+
+.right-side {
+  flex: 5;
+}
+
+.photo {
+    cursor: default;
+    height: 100%;
+    margin-left: 10rem;
+}
+
+.photo1 {
+  background: url('../../images/boomer_vabeach.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo2 {
+  background: url('../../images/venice_beach.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo3 {
+  background: url('../../images/nationals.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo4 {
+  background: url('../../images/cliffs_ireland.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo5 {
+  background: url('../../images/grand_canyon.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo6 {
+  background: url('../../images/seattle.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo7 {
+  background: url('../../images/monticello-trail.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.left-angle {
+  position: relative;
+  top: -13.5rem;
+  left: 4rem;
+  cursor: pointer;
+  opacity: .5!important;
+}
+
+.right-angle {
+  position: relative;
+  top: -14rem;
+  left: 39rem;
+  cursor: pointer;
+  opacity: .5!important;
+
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { get, clone } from 'lodash';
-import { Button } from 'semantic-ui-react';
 import FormItems from '../FormItems/FormItems';
 import FormBuilder from '../FormBuilder/FormBuilder';
 import './Home.css';

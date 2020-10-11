@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from 'semantic-ui-react';
-import { map, some } from 'lodash';
+import { map } from 'lodash';
 import copy from 'copy-to-clipboard';
 import './CodeBuilder.css';
 
 const CodeBuilder = ({form}) => {
-  const [codeForm, setCodeForm] = useState();
-  const [code, setCode] = useState();
   const [options, setOptions] = useState();
 
   useEffect(() => {
-    setCodeForm(form);
-  }, [form])
-
-  useEffect(() => {
     if (options && !form.some(item => item.type === 'dropdown')) setOptions(undefined)
-  }, [form.length])
+  }, [form.length, form, options])
 
   const codeRender = () => {
     if (!form) return <div />;
