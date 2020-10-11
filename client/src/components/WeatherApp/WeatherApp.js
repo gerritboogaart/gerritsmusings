@@ -50,6 +50,9 @@ class WeatherApp extends Component {
   }
 
   componentDidMount = () => {
+    const mobile = window.navigator.userAgent;
+    const mob = mobile.includes('iPhone') || mobile.includes('Android');
+    this.setState({ isMobile: mob });
     if (process.env.NODE_ENV === 'development') {
       const { daily } = MOCK;
       const extraDay = daily.data.map(day => {
@@ -280,56 +283,92 @@ class WeatherApp extends Component {
         {response && !loading
           ?
           <div>
-            <div className='topnav'>
-              <Input
-                icon
-                onChange={this.setlookupplace}
-                onKeyPress={this.lookupcheck}
-                placeholder='Enter city name or zip code'
-                style={{ marginRight: '1rem' }}
-              >
-                <input />
-                <Icon
-                  link
-                  name='search'
-                  onClick={() => this.lookupplace()}
-                />
-              </Input>
+            {
+              this.state.isMobile ?
+                <React.Fragment>
+                  <Input
+                    icon
+                    onChange={this.setlookupplace}
+                    onKeyPress={this.lookupcheck}
+                    placeholder='Enter city name or zip code'
+                    style={{ margin: '1rem auto', width: '98%' }}
+                  >
+                    <input />
+                    <Icon
+                      link
+                      name='search'
+                      onClick={() => this.lookupplace()}
+                    />
+                  </Input>
 
-              <div className='graph-options'>
-                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'forecast' })}>
-                  10 Day Forecast
+                  <div className='graph-options'>
+                    <Button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</Button>
+                    <Button onClick={() => this.setState({ type: 'forecast' })}>
+                      Daily
+                  {/* <Icon name='calendar alternate' /> */}
+                    </Button>
+
+                    <Button onClick={() => this.setState({ type: 'table' })}>
+                      Hourly
+                  {/* <Icon name='table' /> */}
+                    </Button>
+                    <Button onClick={() => this.setState({ type: 'graph' })}>
+                      Graph
+                  {/* <Icon name='area graph' /> */}
+                    </Button>
+                  </div>
+                </React.Fragment>
+
+                :
+                <div className='topnav'>
+                  <Input
+                    icon
+                    onChange={this.setlookupplace}
+                    onKeyPress={this.lookupcheck}
+                    placeholder='Enter city name or zip code'
+                    style={{ marginRight: '1rem' }}
+                  >
+                    <input />
+                    <Icon
+                      link
+                      name='search'
+                      onClick={() => this.lookupplace()}
+                    />
+                  </Input>
+
+                  <div className='graph-options'>
+                    <Button icon labelPosition='right' onClick={() => this.setState({ type: 'forecast' })}>
+                      7 Day Forecast
                   <Icon name='calendar alternate' />
-                </Button>
+                    </Button>
 
-                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'table' })}>
-                  Hourly Forecast
+                    <Button icon labelPosition='right' onClick={() => this.setState({ type: 'table' })}>
+                      Hourly Forecast
                   <Icon name='table' />
-                </Button>
-                <Button icon labelPosition='right' onClick={() => this.setState({ type: 'graph' })}>
-                  10 Day Graph
+                    </Button>
+                    <Button icon labelPosition='right' onClick={() => this.setState({ type: 'graph' })}>
+                      7 Day Graph
                   <Icon name='area graph' />
-                </Button>
-              </div>
+                    </Button>
+                  </div>
+                </div>
+            }
 
-              {/* <Input
-
-                icon={{ name: 'search', circular: true, link: true }}
-                placeholder='Search...'
-                onKeyPress={this.lookupcheck}
-                // value={this.state.place}
-              /> */}
-            </div>
             <div style={{ display: 'flex', paddingTop: '3rem' }}>
               <div className='response'>
                 {this.getTemp()}
                 <p></p>
-                <div className='nav-buttons'>
-                  <div><ul className='location-ul'>
-                    <li><button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</button></li>
-                    {/* {this.renderLocations()} */}
-                  </ul></div>
-                </div>
+                {
+                  !this.state.isMobile &&
+                  <div className='nav-buttons'>
+
+                    <div>
+                      <ul className='location-ul'>
+                        <li><button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                }
               </div>
               {this.renderType()}
             </div>

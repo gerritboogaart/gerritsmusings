@@ -25,7 +25,15 @@
   .single-card {
     margin: 1rem;
   }
+  .main-page {
+    margin: 1rem;
+    font-size: 1rem;
+  }
 
+  .text-main-page {
+    padding: 1rem 0;
+    font-size: 12px;
+  }
 }
 
 .form-card {
