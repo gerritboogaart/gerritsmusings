@@ -15,14 +15,14 @@ const CARDS = {
     url: '/blocks',
     className: 'blocks-card',
     header: 'Falling Blocks',
-    description: 'See blocks fall as you click them away',
+    description: 'CSS Game: See blocks fall as you click them away',
     active: true
   },
   cards: {
     url: '/weather',
     className: 'weather-card',
     header: 'Weather App',
-    description: 'Check your local weather',
+    description: 'Check your local weather data',
     active: true
   },
   blog: {
@@ -36,7 +36,7 @@ const CARDS = {
     url: '/photos',
     className: 'photos-card',
     header: 'Photos',
-    description: 'My pictures and where I took them',
+    description: 'My pictures integrated with Google Maps',
     active: true
   }
 }
@@ -67,10 +67,8 @@ export const Start = () => {
 
   return (
     <div className='main-page'>
-       <Link to='/about' >Gerrit Boogaart</Link>
-        <br />
       <div className='text-main-page'>
-        Welcome to my portfolio. This site is written in React using hooks and sometimes context.<br />
+        Welcome to <Link to='/about' >Gerrit Boogaart's</Link> portfolio. This site is written in React using hooks and sometimes context.<br />
         </div>
       <div className='card-holder'>
       <Card.Group>

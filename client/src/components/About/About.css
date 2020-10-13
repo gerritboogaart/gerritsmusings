@@ -7,6 +7,7 @@
   padding: 2rem 0;
   line-height: 2rem;
   text-align: justify;
+  width: 80%;
 }
 
 .quotes {
@@ -19,5 +20,11 @@
   .about-page {
     margin: 2rem;
     font-size: 1rem;
+  }
+  .text-about-page {
+    padding: 1rem 0;
+    line-height: 1.2rem;
+    text-align: justify;
+    width: 95%;
   }
 }

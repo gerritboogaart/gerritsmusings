@@ -268,13 +268,6 @@ class WeatherApp extends Component {
         return this.renderForecast();
     }
   }
-  // getSrcUrl = () => {
-  //   const base = 'https://www.google.com/maps/embed/v1/view?key=';
-  //   const lat = this.state.lat || '36.8506';
-  //   const long = this.state.long || '-75.9779';
-  //   const api = 'AIzaSyB1HZVz7L6ls6xNQsNxU-j7-MiaGZvgeAo';
-  //   return base + api + '&center=' + lat + ',' + long + '&&zoom=10';
-  // }
 
   render() {
     const { response, loading } = this.state;
@@ -321,6 +314,7 @@ class WeatherApp extends Component {
 
                 :
                 <div className='topnav'>
+                  <Button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</Button>
                   <Input
                     icon
                     onChange={this.setlookupplace}
@@ -335,7 +329,6 @@ class WeatherApp extends Component {
                       onClick={() => this.lookupplace()}
                     />
                   </Input>
-
                   <div className='graph-options'>
                     <Button icon labelPosition='right' onClick={() => this.setState({ type: 'forecast' })}>
                       7 Day Forecast
@@ -357,32 +350,9 @@ class WeatherApp extends Component {
             <div style={{ display: 'flex', paddingTop: '3rem' }}>
               <div className='response'>
                 {this.getTemp()}
-                <p></p>
-                {
-                  !this.state.isMobile &&
-                  <div className='nav-buttons'>
-
-                    <div>
-                      <ul className='location-ul'>
-                        <li><button className='temp-button' onClick={() => this.changeTemp()} >{this.state.temp}</button></li>
-                      </ul>
-                    </div>
-                  </div>
-                }
               </div>
               {this.renderType()}
             </div>
-            {/* <iframe
-              style={{ margin: '-1rem 0 0 -22rem' }}
-              width="600"
-              height="450"
-              frameBorder="0"
-              title="weather map"
-              src={this.getSrcUrl()} >
-            </iframe> */}
-            {/* <div className='google-map'>
-              {this.getSrcUrl()}
-            </div> */}
           </div>
           : <p>Loading...</p>}
       </div>
