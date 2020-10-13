@@ -18,18 +18,19 @@ export const Photos = () => {
     }
   }, [mobile, isMobile])
 
-  const moveLeft = () => setPhoto(photo - 1 < 1 ? 7 : photo - 1);
+  const moveLeft = () => setPhoto(photo - 1 < 1 ? 8 : photo - 1);
 
-  const moveRight = () => setPhoto(photo + 1 > 7 ? 1 : photo + 1);
+  const moveRight = () => setPhoto(photo + 1 > 8 ? 1 : photo + 1);
 
   const QUERY = {
     1: { name: 'virginia+beach+rudee+inlet', zoom: 8 },
     2: { name: 'venice+beach', zoom: 8 },
     3: { name: 'nationals+park+washington+DC', zoom: 8 },
-    4: { name: 'cliffs+of+moher', zoom: 7 },
-    5: { name: 'grand-canyon+west', zoom: 6 },
-    6: { name: 'kerry+park+seattle+washington', zoom: 7 },
-    7: { name: 'monticello+trail+charlottesville+va', zoom: 8 }
+    4: { name: 'charlottesville+va', zoom: 8 }
+    5: { name: 'cliffs+of+moher', zoom: 7 },
+    6: { name: 'grand-canyon+west', zoom: 6 },
+    7: { name: 'kerry+park+seattle+washington', zoom: 7 },
+    8: { name: 'monticello+trail+charlottesville+va', zoom: 8 }
   }
 
   const getSrcUrl = () => {

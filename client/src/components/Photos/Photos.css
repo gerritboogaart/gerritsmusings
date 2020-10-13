@@ -86,6 +86,12 @@
   background-repeat: no-repeat;
 }
 
+.photo7 {
+  background: url('../../images/starbuck.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .left-angle {
   position: relative;
   top: -14rem;

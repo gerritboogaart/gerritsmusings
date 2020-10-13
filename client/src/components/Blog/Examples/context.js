@@ -5,10 +5,10 @@ const Context = React.createContext();
 
 const names = [
   { firstName: 'Jessica' },
-  { firstName: 'Alfredo' },
-  { firstName: 'Maria' },
+  { firstName: 'Albert' },
+  { firstName: 'Marie' },
   { firstName: 'Rashid' },
-  { firstName: 'Charles' },
+  { firstName: 'Charlie' },
   { firstName: 'Isabella' }
 ];
 
