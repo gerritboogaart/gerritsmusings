@@ -25,8 +25,8 @@ export const About = () => {
       Gerrit Boogaart | Software Engineer
       <div className='text-about-page'>
         Welcome to my portfolio. This site is written in React using hooks and sometimes context.<br />
-        I code in JavaScript, ReactJS, NodeJS, and use CSS3, HTML5 and MySql to bring apps alive.<br />
-        I have a passion for coding and solving problems programatically. I am intrigued in using both the front end and the backedd to create the optimal experience for clients, custumers, guests, and passerby.<br />
+        I code in JavaScript, ReactJS, NodeJS, and use CSS3, HTML5 and MySql to bring apps to life.<br />
+        I have a passion for coding and solving problems programmatically. I am intrigued in using both the front end and the back end to create the optimal experience for clients, customers, guests, and the passerby.<br />
         My hobbies that do not involve a screen are my dog Boomer (a Boston Terrier), reading my Kindle, and indoor cycling.
         <br />
         <p />
