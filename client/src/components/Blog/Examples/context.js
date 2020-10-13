@@ -4,12 +4,12 @@ import React from "react";
 const Context = React.createContext();
 
 const names = [
-  { firstName: 'Hank' },
-  { firstName: 'Alfred' },
-  { firstName: 'Tim' },
-  { firstName: 'Harold' },
+  { firstName: 'Jessica' },
+  { firstName: 'Alfredo' },
+  { firstName: 'Maria' },
+  { firstName: 'Ahmed' },
   { firstName: 'Charles' },
-  { firstName: 'Chuck' }
+  { firstName: 'Isabella' }
 ];
 
 const nameBuilder = (firstName, lastName, birthday, pob, rating) => {

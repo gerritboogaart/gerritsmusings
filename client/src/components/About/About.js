@@ -22,7 +22,8 @@ export const About = () => {
 
   return (
     <div className='about-page'>
-      Gerrit Boogaart | Software Engineer
+      <span style={{fontSize: '2rem', color: 'darkslategray'}}>Gerrit Boogaart <span style={{fontSize: '2rem', color: '#e2e2e2'}}>|</span> Software Engineer</span>
+
       <div className='text-about-page'>
         Welcome to my portfolio. This site is written in React using Hooks and sometimes Context.<br />
         I code in JavaScript, ReactJS, NodeJS, and use CSS3, HTML5 and MySql to bring apps to life.<br />

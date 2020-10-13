@@ -14,21 +14,21 @@ const CARDS = {
   blocks: {
     url: '/blocks',
     className: 'blocks-card',
-    header: 'Falling Blocks',
+    header: 'Blocks',
     description: 'CSS Game: See blocks fall as you click them away',
     active: true
   },
   cards: {
     url: '/weather',
     className: 'weather-card',
-    header: 'Weather App',
+    header: 'Weather',
     description: 'Check your local weather data',
     active: true
   },
   blog: {
     url: '/blog',
     className: 'blog-card',
-    header: 'My Blog',
+    header: 'Blog',
     description: 'Read my musings',
     active: true
   },
