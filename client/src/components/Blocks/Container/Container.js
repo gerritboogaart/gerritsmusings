@@ -350,8 +350,8 @@ export class Container extends Component {
         { showHelp && (
           <div className='help-text'>
             <Icon link claseName='help-text-close' name='close' onClick={() => this.setState({ showHelp: false })} />
-              Click on a block and all the blocks with the same color adjacent dissapear, all the blocks above the ones that are gone fall down.<br />
-              Remove all blocks in a row gives you a suprise.<br />
+              Click on a block and all the adjacent blocks with the same color will disappear, all the blocks above the ones that disappeared will fall down.<br />
+              Remove all blocks in a row gives you a surprise.<br />
               Clear all rows in the least number of clicks.
           </div>
         )}
