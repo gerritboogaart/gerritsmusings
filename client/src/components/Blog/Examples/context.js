@@ -7,7 +7,7 @@ const names = [
   { firstName: 'Jessica' },
   { firstName: 'Alfredo' },
   { firstName: 'Maria' },
-  { firstName: 'Ahmed' },
+  { firstName: 'Rashid' },
   { firstName: 'Charles' },
   { firstName: 'Isabella' }
 ];
