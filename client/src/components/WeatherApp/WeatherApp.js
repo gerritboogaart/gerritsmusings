@@ -45,7 +45,8 @@ class WeatherApp extends Component {
       locations: locations,
       loading: false,
       place: '',
-      type: 'forecast'
+      type: 'forecast',
+      timezone: 'America/New_York'
     };
   }
 
@@ -62,7 +63,7 @@ class WeatherApp extends Component {
         const useDay = `${dow} ${curtime}`;
         return { ...day, useDay };
       });
-      this.setState({ response: MOCK, loading: false, days: extraDay });
+      this.setState({ timezone: 'America/New_York', response: MOCK, loading: false, days: extraDay });
     } else {
       this.getWeatherUpdate();
     }
@@ -82,7 +83,7 @@ class WeatherApp extends Component {
           const useDay = `${dow} ${curtime}`;
           return { ...day, useDay };
         });
-        this.setState({ response: result.data, loading: false, days: extraDay });
+        this.setState({ timezone: result.data.timezone, response: result.data, loading: false, days: extraDay });
       })
       .catch(error => {
         console.log(error);
@@ -102,7 +103,7 @@ class WeatherApp extends Component {
     const { currently } = this.state.response;
     const t = parseFloat(currently.temperature);
     const { temp, deg } = calcTemp(t, this.state.temp);
-    const time = new Date(currently.time * 1000);
+    const time = new Date();
     const curtime = `${time.getMonth() + 1}/${time.getDate()}/${time.getFullYear()}`;
     const minutes = time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes();
     // let hours = time.getHours() < 10 ? `0${time.getHours()}` : time.getHours();
@@ -110,6 +111,7 @@ class WeatherApp extends Component {
     const { hours, ampm } = calcAmPm(time);
 
     const clock = `${hours}:${minutes}:${sec} ${ampm}`;
+    const locale = time.toLocaleString('en-US', { timeZone: this.state.timezone })
 
     return (
       <div>
@@ -118,6 +120,7 @@ class WeatherApp extends Component {
         <p><span style={{ fontWeight: 'bold' }}>Weather:</span> {currently.summary}</p>
         <p><span style={{ fontWeight: 'bold' }}>Date:</span> {curtime}</p>
         <p><span style={{ fontWeight: 'bold' }}>Time:</span> {clock}</p>
+        <p><span style={{ fontWeight: 'bold' }}>Local Time:</span><br />{locale}</p>
       </div>
     );
   }
