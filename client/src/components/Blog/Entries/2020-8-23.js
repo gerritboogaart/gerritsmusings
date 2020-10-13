@@ -14,7 +14,7 @@ export default (
     <br />
       I'm testing Context  <Link style={{ color: 'blue' }} to="/examples">if you click this link</Link>.
       It actually works pretty well.
-      In this example, I used context to update a person's attribute.  When you click on a person, you can update several fields and properties.
+      In this example, I used Context to update a person's attribute.  When you click on a person, you can update several fields and properties.
       You can also add a rating (because Semantic is so cool). The birth date is a simplification of datepicker.
     <br />
       Q: What was I trying to solve? A: I am attempting to find out if I prefer Context or Redux when creating dynamic components.
@@ -93,7 +93,7 @@ export default (
     </div>
 
     <div className='blog-text'>
-        Now you can use the context in Names and EditArea like this:
+        Now you can use the Context in Names and EditArea like this:
     </div>
     <div className='code-block'>
       <p>{`import React from "react";`}</p>
@@ -114,8 +114,7 @@ export default (
         The cool thing is, if I click on the first name, actions.selectName in context.js gets called, which updates the state with <span className='blog-bold'>
         {`selectName = index => this.setState({ selectedName: index })`}</span>
         <br />To make this change appear on the right side, I coded EditArea to only display anything if selectedName is not undefined.
-         The code following is a simplified version. I am using hooks in this example to show how hooks and Context mix quite well together.
-
+         The code following is a simplified version. I am using Hooks in this example to show how Hooks and Context mix quite well together.
     </div>
     <div className='code-block'>
 

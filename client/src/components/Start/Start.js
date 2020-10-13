@@ -68,7 +68,7 @@ export const Start = () => {
   return (
     <div className='main-page'>
       <div className='text-main-page'>
-        Welcome to <Link to='/about' >Gerrit Boogaart's</Link> portfolio. This site is written in React using hooks and sometimes context.<br />
+        Welcome to <Link to='/about' >Gerrit Boogaart's</Link> portfolio. This site is written in React using Hooks and sometimes Context.<br />
         </div>
       <div className='card-holder'>
       <Card.Group>
