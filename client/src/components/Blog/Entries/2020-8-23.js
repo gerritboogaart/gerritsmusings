@@ -9,33 +9,33 @@ export default (
       <h1>An example of how to use the ReactJS Context api</h1>
       These are my musings on Context in React.
     <hr />
-      In here I will investigate the use of React Context.
-      I'm interested in what I will learn :)
+      Here, I will investigate the use of React Context.
+      I am interested in what I will learn :)
     <br />
       I'm testing Context  <Link style={{ color: 'blue' }} to="/examples">if you click this link</Link>.
       It actually works pretty well.
       In this example, I used context to update a person's attribute.  When you click on a person, you can update several fields and properties.
-      For posterity you can add a rating (because Semantic is so cool). The birth date is a simplification of datepicker.
+      You can also add a rating (because Semantic is so cool). The birth date is a simplification of datepicker.
     <br />
-      Q: What was I trying to solve? A: What is all the Context fuzz about?
+      Q: What was I trying to solve? A: I am attempting to find out if I prefer Context or Redux when creating dynamic components.
 
     <h5 className='blog-bold'>Context TLDR:</h5>
-      It's pretty cool, and once set up, it's pretty powerful. I am still not sure if it's better or worse than redux.
+      Context is pretty cool, and once set up, it is pretty powerful. I am still not sure if it's better or worse than redux.
     <h5>React Context, the long answer</h5>
-      How did I go about all this? First I knew I wanted a simple react app with two panels. One that lists the names: a simple array of objects with firstName, lastName, birth date, home town, and rating.
-      Then i figured the list needs to be clickable so that when a person is clicked, it becomes selected, and the right panel will show a form with the attributes in inputs.
-      I wanted to achieve this without 'drilling' of props. In comes 'Context'. ReactJS has this thing called React.CreateContext() that I was happy to use.
+      How did I go about all this? First, I knew I wanted a simple react app with two panels. One panel that shows a list of names. This pane will display a simple array of objects with firstName, lastName, birth date, home town, and rating.
+      Then, I figured the list needs to be clickable. When you click on a person, the person becomes 'selected', and the right panel will show a form with the attributes of the selected person as inputs.
+      I wanted to achieve this without 'drilling' of props. In comes 'Context'. ReactJS has a feature called React.CreateContext() that allows you to use Context.
   <br />
       How to setup and use Context:
   <br />
-      In your freshly created React app. Create a file called context.js (or whatever you think works well as a name).
+      In your freshly created React app, create a file called context.js (or whatever you think works well as a name).
 
     <div className='code-block'>
         <p>import React from "react";</p>
         <p>const Context = React.createContext();</p>
       </div>
       <div className='blog-text'>
-        For simplicity sake, i created a simple array called names that looks like this: {`[{firstName: 'Hank'}, {firstName: 'Charles'},...]`}. In the example I let stuff save in the localStorage so I can see what I did.
+        To keep the example easy, I created a simple array called names that looks like this: {`[{firstName: 'Hank'}, {firstName: 'Charles'},...]`}. In the example I save changed data in the localStorage so I can see what I did.
     <br />Then you declare your AppContextProvider:
     </div>
 
@@ -47,13 +47,12 @@ export default (
         <p className='indent1'>{`};`}</p>
         <br />
         <p className='indent1'>{`selectName = index => this.setState({ selectedName: index })`}</p>
-
       </div>
 
       <div className='blog-text'>
-        All your functions, or <span className='blog-bold'>actions</span> go in here. When you have done this,  you get to the core of the magic: you render this.props.children inside a wrapper. That's why stuff needs to get wrapped later.
-        This will cause state to be updated and therefore, your keeps your page in the correct state, which is HUGE!
-        <br />Pro tip: don't forget <span className='blog-bold'>{`{this.props.children}`} cause nothing will be rendered in your child Component...</span>
+        All your functions, or <span className='blog-bold'>actions</span> go in here. When you have done this,  you get to the core of the magic: you render this.props.children inside a wrapper. That is why stuff needs to get wrapped later.
+        This will cause state to be updated and therefore, will keep your page in the correct state.
+        <br />Pro tip: don't forget <span className='blog-bold'>{`{this.props.children}`} because nothing will be rendered in your child Component...</span>
       </div>
       <div className='code-block'>
         <p>{`render() {`}</p>
@@ -74,9 +73,9 @@ export default (
         <p>{`export default { Provider: AppContextProvider, Consumer: Context.Consumer };`}</p>
       </div>
       <div className='blog-text'>
-        As you can see from the example, Context.Provider has as value: this.state and actions in my example. In my example you can call names and selectedName from state, and addName, selectName, and updateName from actions. for example: actions.selectName would run above function {`selectName = index => this.setState({ selectedName: index })`}
+        Context.Provider has as values 'this.state' and 'actions' in my example. In my example you can call names and selectedName from state, and addName, selectName, and updateName from actions. for example: actions.selectName would run above function {`selectName = index => this.setState({ selectedName: index })`}
         <br />
-        To make this actually work in your app, you have to wrap the component you want to use your context in with this: (App.js for example). In this case, the state and actions from the context provider can be used in Names and EditArea.
+        To make this actually work in your app, the components that use Context have to be wrapped in a Provider. I added this wrapper in App.js. The state and actions from the context provider can be used in Names and EditArea becuase they are wrapped in the provider in the code below.
 
     </div>
       <div className='code-block'>
@@ -112,9 +111,10 @@ export default (
       <p>)</p>
     </div>
     <div className='blog-text'>
-        So the cool thing is, if i click on the first name, actions.selectName in context.js gets called, which updates the state with <span className='blog-bold'>
+        The cool thing is, if I click on the first name, actions.selectName in context.js gets called, which updates the state with <span className='blog-bold'>
         {`selectName = index => this.setState({ selectedName: index })`}</span>
-        <br />So to make this appear on the right side, I coded EditArea to only display anything if selectedName is not undefined. The code following is a simplified version, but you get the drift. I'm using hooks to show hooks and context mix quite well
+        <br />To make this change appear on the right side, I coded EditArea to only display anything if selectedName is not undefined.
+         The code following is a simplified version. I am using hooks in this example to show how hooks and Context mix quite well together.
 
     </div>
     <div className='code-block'>
