@@ -13,9 +13,12 @@ const START = 0;
 const COLS = 10;
 const ROWS = [352, 302, 252, 202, 152];
 const R = { 352: 0, 302: 1, 252: 2, 202: 3, 152: 4 };
+const PLAYROWS = 5;
+
+let won = false;
 
 export class Container extends Component {
-  state = { blocks: [], game: 'advanced', step: START, left: 50, hiscore: 1000, showHelp: false };
+  state = { blocks: [], step: START, left: 50, hiscore: 1000, showHelp: false };
 
   componentDidMount() {
     this.resetBlocks();
@@ -28,7 +31,8 @@ export class Container extends Component {
   resetBlocks = async (e) => {
     if (e) e.preventDefault();
     const rows = [];
-    for (let r = 0; r < 5; r++) {
+    won = false;
+    for (let r = 0; r < PLAYROWS; r++) {
       const row = new Array(COLS);
       row.fill();
       const blocks = map(row, (block, i) => {
@@ -47,7 +51,7 @@ export class Container extends Component {
       rows.push(blocks);
     }
     const hiscore = await this.getHiScore();
-    this.setState({ step: START, blocks: rows, hiscore }, () => this.startMove());
+    this.setState({ left: 50, step: START, blocks: rows, hiscore }, () => this.startMove());
   }
 
   getSingleAdj = (co, color, blocks) => {
@@ -78,7 +82,7 @@ export class Container extends Component {
     return blocks;
   }
 
-  findAdjecent = (coor, block) => {
+  findAdjacent = (coor, block) => {
     const blocks = clone(this.state.blocks);
     const [x, y] = coor;
     const op = block.opacity === 1 ? 0.3 : 1;
@@ -139,15 +143,7 @@ export class Container extends Component {
 
   clickBlock = (block, row, blockIndex) => {
     if (block.useClass === 'boston') return;
-    const blocks = clone(this.state.blocks);
-    if (this.state.game === 'advanced') {
-      this.findAdjecent([row, blockIndex], block);
-    } else {
-      const newBlock = { ...block, opacity: 0 };
-      blocks[row][blockIndex] = newBlock;
-
-      this.setState({ blocks, step: this.state.step + 1 }, this.moveBlocksDown(row, blockIndex));
-    }
+    this.findAdjacent([row, blockIndex], block);
   }
 
   getNewColumn = (column, row, c) => {
@@ -186,7 +182,7 @@ export class Container extends Component {
       if (change === 0) return this.setState({ blocks: newBlocks }, () => this.afterMove());
       setTimeout(() => {
         setting(newBlocks);
-      }, 5)
+      }, 3)
     }
 
     const setting = (blocks) => this.setState({ blocks }, () => mapping());
@@ -286,20 +282,22 @@ export class Container extends Component {
   }
 
   drawCongrats = () => {
+
     let good = false;
-    if (!Number(this.state.hiscore) || this.state.step < Number(this.state.hiscore)) {
+    if (won === false && (!Number(this.state.hiscore) || this.state.step < Number(this.state.hiscore))) {
       good = true;
+      won = true;
       localStorage.setItem('hiscore', this.state.step);
     }
     if (good) return (
-      <div className='congrats'>
+      <div key='congrats' className='congrats'>
         <p>Congratulations! It took you {this.state.step} clicks!</p>
         <p></p>
         <p>You improved your High Score!!!</p>
       </div>
     );
     return (
-      <div className='congrats'>
+      <div key='congrats' className='congrats'>
         <p>Congratulations! It took you {this.state.step} clicks!</p>
         <p></p>
         <p>Click reset to improve your score!</p>
@@ -308,13 +306,15 @@ export class Container extends Component {
   }
 
   drawBlocks = () => {
-    if (this.state.left < 1) return this.drawCongrats();
-
     const blocks = get(this.state, 'blocks');
     if (isArray(blocks)) {
-      return map(blocks, (row, i) => {
+      const rows =  map(blocks, (row, i) => {
         return map(row, (block, index) => this.drawBlock(block, i, index))
       })
+      let congrats;
+      if (this.state.left < 1) congrats = this.drawCongrats();
+      rows.unshift(congrats);
+      return rows;
     }
   }
 
@@ -327,15 +327,12 @@ export class Container extends Component {
     const score = this.displayHiscore();
     return (
       <div className='blocks'>
-
         <div className='container'>
           <div className='field'>
             {this.drawBlocks()}
           </div>
           <div className='reset-holder'>
             <button className='reset-button' onClick={this.resetBlocks}>reset</button>
-            <button className={game === 'simple' ? 'reset-button-active' : 'reset-button'} onClick={() => this.setState({ game: 'simple' })}>simple</button>
-            <button className={game === 'advanced' ? 'reset-button-active' : 'reset-button'} onClick={() => this.setState({ game: 'advanced' })}>advanced</button>
           </div>
         </div>
         <div className='block-numbers'>
@@ -353,18 +350,12 @@ export class Container extends Component {
         { showHelp && (
           <div className='help-text'>
             <Icon link claseName='help-text-close' name='close' onClick={() => this.setState({ showHelp: false })} />
-          Click on a block and all the blocks with the same color adjecent dissapear, and all the blocks above the once that are gone fall down.<br />
-          Remove all blocks in a row gives you a suprise.<br />
-          Clear all rows as fast as you can.
+              Click on a block and all the blocks with the same color adjacent dissapear, all the blocks above the ones that are gone fall down.<br />
+              Remove all blocks in a row gives you a suprise.<br />
+              Clear all rows in the least number of clicks.
           </div>
-        )
-
-        }
-
+        )}
       </div>
-
-
-
     );
   }
 }

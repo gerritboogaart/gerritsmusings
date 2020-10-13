@@ -78,11 +78,9 @@ outline: none!important;
 .congrats {
   text-align: center;
   height: 100%;
-  font-size: 2rem;
+  font-size: 1.4rem;
   padding-top: 6rem;
-  background: cadetblue;
-  color: yellow;
-  font-style: oblique;
+  color: gray;
 }
 
 .block-numbers {

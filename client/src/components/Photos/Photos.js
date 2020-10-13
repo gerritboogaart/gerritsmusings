@@ -7,10 +7,10 @@ export const Photos = () => {
   const [mobile, setMobile] = useState(window.navigator.userAgent);
   const [isMobile, setIsMobile] = useState(false);
   const [size, setSize] = useState([500, 400]);
+  const [showText, setShowText] = useState(false)
 
   useEffect(() => {
     if (!isMobile) {
-      console.log(mobile);
       const mob = mobile.includes('iPhone') || mobile.includes('Android');
       setIsMobile(mob);
       const resize = mob ? [345, 350] : [500, 400];
@@ -59,11 +59,13 @@ export const Photos = () => {
           </div>
         </div>
         <div className='photos-text'>
-          All pictures are my personal photos captured on either my wife's iPhone 6s , or my Samsung Galaxy S9.
+         <Icon link name='camera' size='big' onClick={() => setShowText(!showText)}></Icon>
+         { showText && (
+           <span className='photo-span'>
+            All pictures are my personal photos captured on either my wife's iPhone 6s, or my Samsung Galaxy S9.
+           </span>
+         )}
         </div>
-
     </div>
-
-
   )
 }

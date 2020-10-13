@@ -1,18 +1,30 @@
 .photos-page {
-  margin: 5rem;
+  margin: 2rem auto;
 }
 
 .photos-text {
-  margin-left: 10rem;
-  font-size: 12px;
+  position: absolute;
+  top: 17rem;
+  left: 6.8rem;
   color: grey;
+}
+
+.photo-span {
+  font-size: 1rem;
+  width: 395px;
+    display: block;
+    background: #fff;
+    position: relative;
+    left: 48px;
+    top: -27px;
+    opacity: .8;
 }
 
 .photo-columns {
   display: flex;
   width: 100vw;
   /* height: 400px; */
-  margin: 5rem 0;
+  margin: 1rem 0;
 }
 .photo-holder {
   height: 400px;
