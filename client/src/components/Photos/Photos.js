@@ -24,13 +24,13 @@ export const Photos = () => {
 
   const QUERY = {
     1: { name: 'virginia+beach+rudee+inlet', zoom: 8 },
-    2: { name: 'venice+beach', zoom: 8 },
-    3: { name: 'nationals+park+washington+DC', zoom: 8 },
-    4: { name: 'charlottesville+va', zoom: 8 },
+    2: { name: 'charlottesville+va', zoom: 8 },
+    3: { name: 'venice+beach', zoom: 8 },
+    4: { name: 'nationals+park+washington+DC', zoom: 8 },
     5: { name: 'cliffs+of+moher', zoom: 7 },
     6: { name: 'grand-canyon+west', zoom: 6 },
     7: { name: 'kerry+park+seattle+washington', zoom: 7 },
-    8: { name: 'monticello+trail+charlottesville+va', zoom: 8 }
+    8: { name: 'monticello+trail+charlottesville+va', zoom: 8 },
   }
 
   const getSrcUrl = () => {

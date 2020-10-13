@@ -51,43 +51,43 @@
 }
 
 .photo2 {
-  background: url('../../images/venice_beach.jpg');
+  background: url('../../images/starbuck.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .photo3 {
-  background: url('../../images/nationals.jpg');
+  background: url('../../images/venice_beach.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .photo4 {
-  background: url('../../images/cliffs_ireland.jpg');
+  background: url('../../images/nationals.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .photo5 {
-  background: url('../../images/grand_canyon.jpg');
+  background: url('../../images/cliffs_ireland.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .photo6 {
+  background: url('../../images/grand_canyon.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.photo7 {
   background: url('../../images/seattle.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.photo7 {
+.photo8 {
   background: url('../../images/monticello-trail.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.photo7 {
-  background: url('../../images/starbuck.jpg');
   background-size: contain;
   background-repeat: no-repeat;
 }
