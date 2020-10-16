@@ -1,4 +1,4 @@
-# Gerrits Musings
+# Gerrit's Musings
 
 To run the code: npm run dev
 This will concurrently start the server and the React app.
