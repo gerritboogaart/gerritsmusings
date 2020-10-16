@@ -5,28 +5,12 @@ const axios = require('axios');
 const locs = require('./locations.json');
 
 const port = process.env.PORT || 5000;
-
-const weather = 'https://api.darksky.net/forecast/734380008b4832fb5da71a68d80737d4/';
-
+const WEATHER_API = process.env.WEATHERAPI;
+const LOCAPI = process.env.LOCAPI;
+const weather = `https://api.darksky.net/forecast/${WEATHER_API}/`;
 
 const location = 'https://maps.googleapis.com/maps/api/geocode/json?';
-const api = 'AIzaSyC1dEid2g2vnR4-hHJvN_ZbNN1o9vOUwFI';
-const location_api = '7c5f288e50b73b';
-
-const db_user = 'gerritsmusings';
-const db_key = 'dMFmaSfbJ0rfmt0T'
-
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://gerritsmusings:<password>@musings0.iyrqu.mongodb.net/<dbname>?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-
-
-// app.use(express.static(path.join(__dirname, 'client/build')));
+const api = LOCAPI;
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
@@ -34,7 +18,6 @@ if(process.env.NODE_ENV === 'production') {
     res.status(200).send('good things');
   });
   app.get('/weather', function(req,res,next){
-    console.log('getting weather', req.query);
     const loc = req.query.location;
     const url = `${weather}${loc}`;
     axios.get(url)
@@ -68,9 +51,6 @@ app.get('/weather', function(req,res,next){
   console.log('getting weather', req.query);
   const loc = req.query.location;
   const url = `${weather}${loc}`;
-  // axios.get('http://www.mocky.io/v2/5d30962b320000a97720460b') // Getting the data from DarkSky
-  //   .then( result => res.status(200).send({succes: result}))
-  //   .catch( error => res.status(400).send(error))
   axios.get(url)
   .then(function (response) {
     res.status(200).send(response.data);

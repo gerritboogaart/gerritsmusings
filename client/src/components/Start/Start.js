@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './Start.css';
 
@@ -68,7 +68,9 @@ export const Start = () => {
   return (
     <div className='main-page'>
       <div className='text-main-page'>
-        Welcome to <Link to='/about' >Gerrit Boogaart's</Link> portfolio. This site is written in React using Hooks and sometimes Context.<br />
+        <p>Welcome to <Link to='/about' >Gerrit Boogaart's</Link> portfolio. This site is written in React using Hooks and sometimes Context.</p>
+        <p>My code is available on <a href='https://github.com/gerritboogaart/newweatherapp/' target='_blank'><Icon name='github' />GitHub</a></p>
+
         </div>
       <div className='card-holder'>
       <Card.Group>
