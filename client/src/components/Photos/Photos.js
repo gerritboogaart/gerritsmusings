@@ -10,17 +10,17 @@ export const Photos = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [size, setSize] = useState([500, 400]);
   const [showText, setShowText] = useState(false);
-  const [googleApi, setGoogleApi]= useState();
+  const [googleApi, setGoogleApi] = useState();
 
   useEffect(() => {
     if (!googleApi) {
       axios.get('/getapi')
-      .then(result => {
-        setGoogleApi(result.data)
-      })
-      .catch(error => {
-        console.log(error);
-      })
+        .then(result => {
+          setGoogleApi(result.data)
+        })
+        .catch(error => {
+          console.log(error);
+        })
     }
   });
 
@@ -59,34 +59,34 @@ export const Photos = () => {
   return (
     <div className='photos-page'>
 
-        <div className='photo-columns'>
+      <div className='photo-columns'>
         <div className='photo-holder'>
           <div className={`photo photo${photo}`}></div>
           <Icon onClick={() => moveRight()} className='right-angle' size='big' name='chevron circle right'></Icon>
-          <Icon onClick={() => moveLeft()}className='left-angle' size='big' name='chevron circle left'></Icon>
-          </div>
-          <div className='right-side'>
+          <Icon onClick={() => moveLeft()} className='left-angle' size='big' name='chevron circle left'></Icon>
+        </div>
+        <div className='right-side'>
           {!photo || !googleApi ? (
             <Loader>Waiting for google api</Loader>
           ) : (
-            <iframe
-            width={size[0]}
-            title="Where is this picture taken"
-            height={size[1]}
-            frameBorder="0"
-            src={getSrcUrl()} >
-          </iframe>
-          )}
-          </div>
+              <iframe
+                width={size[0]}
+                title="Where is this picture taken"
+                height={size[1]}
+                frameBorder="0"
+                src={getSrcUrl()} >
+              </iframe>
+            )}
         </div>
-        <div className='photos-text'>
-         <Icon link name='camera' size='big' onClick={() => setShowText(!showText)}></Icon>
-         { showText && (
-           <span className='photo-span'>
+      </div>
+      <div className='photos-text'>
+        <Icon link name='camera' size='big' onClick={() => setShowText(!showText)}></Icon>
+        {showText && (
+          <span className='photo-span'>
             All pictures are my personal photos captured on either my wife's iPhone 6s, or my Samsung Galaxy S9.
-           </span>
-         )}
-        </div>
+          </span>
+        )}
+      </div>
     </div>
   )
 }
