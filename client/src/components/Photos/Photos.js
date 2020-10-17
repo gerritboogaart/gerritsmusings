@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Loader } from 'semantic-ui-react';
 import axios from 'axios';
 import './Photos.css';
 
+const mobile = window.navigator.userAgent;
+
 export const Photos = () => {
   const [photo, setPhoto] = useState(1);
-  const [mobile, setMobile] = useState(window.navigator.userAgent);
   const [isMobile, setIsMobile] = useState(false);
   const [size, setSize] = useState([500, 400]);
   const [showText, setShowText] = useState(false);
@@ -48,10 +49,9 @@ export const Photos = () => {
   }
 
   const getSrcUrl = () => {
-    if (!photo) return <div />
+    if (!photo || !googleApi) return '';
     const base = 'https://www.google.com/maps/embed/v1/place?key=';
-    const api = 'AIzaSyB1HZVz7L6ls6xNQsNxU-j7-MiaGZvgeAo';
-    console.log(api, googleApi, api === googleApi);
+    const api = googleApi;
 
     return base + api + '&q=' + QUERY[photo]['name'] + '&zoom=' + QUERY[photo]['zoom'];
   }
@@ -66,13 +66,17 @@ export const Photos = () => {
           <Icon onClick={() => moveLeft()}className='left-angle' size='big' name='chevron circle left'></Icon>
           </div>
           <div className='right-side'>
-          <iframe
-              width={size[0]}
-              title="Where is this picture taken"
-              height={size[1]}
-              frameBorder="0"
-              src={getSrcUrl()} >
-            </iframe>
+          {!photo || !googleApi ? (
+            <Loader>Waiting for google api</Loader>
+          ) : (
+            <iframe
+            width={size[0]}
+            title="Where is this picture taken"
+            height={size[1]}
+            frameBorder="0"
+            src={getSrcUrl()} >
+          </iframe>
+          )}
           </div>
         </div>
         <div className='photos-text'>
