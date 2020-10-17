@@ -28,8 +28,8 @@ export const NavBar = () => {
         <List.Item > <Link onClick={() => setActive('home')}  style={setClass('')} to="/"><Icon name='home' /></Link></List.Item>
         <List.Item > <Link onClick={() => setActive('blog')} style={setClass('blog')}  to="/blog">Blog</Link> </List.Item>
         {/* <List.Item> <Link onClick={() => setActive('forms')} style={setClass('forms')}  to="/forms">Form Builder</Link> </List.Item> */}
-        <List.Item> <Link onClick={() => setActive('blocks')} style={setClass('blocks')}  to="/blocks">Blocks</Link> </List.Item>
         <List.Item> <Link onClick={() => setActive('weather')} style={setClass('weather')}  to="/weather">Weather</Link> </List.Item>
+        <List.Item> <Link onClick={() => setActive('blocks')} style={setClass('blocks')}  to="/blocks">Blocks</Link> </List.Item>
         <List.Item> <Link onClick={() => setActive('photos')} style={setClass('photos')}  to="/photos">Photos</Link> </List.Item>
         <List.Item> <Link onClick={() => setActive('about')} style={setClass('about')}  to="/about">About</Link> </List.Item>
       </List>

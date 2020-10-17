@@ -76,8 +76,8 @@ export const Start = () => {
       <Card.Group>
         {createCard('blog')}
         {/* {createCard('forms')} */}
-        {createCard('blocks')}
         {createCard('cards')}
+        {createCard('blocks')}
         {createCard('photos')}
       </Card.Group>
       </div>
