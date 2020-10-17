@@ -35,7 +35,7 @@ export default (
         <p>const Context = React.createContext();</p>
       </div>
       <div className='blog-text'>
-        To keep the example easy, I created a simple array called names that looks like this: {`[{firstName: 'Hank'}, {firstName: 'Charles'},...]`}. In the example I save changed data in the localStorage so I can see what I did.
+        To keep the example easy, I created a simple array called names that looks like this: {`[{firstName: 'Jessica'}, {firstName: 'Charlie'},...]`}. In the example I save changed data in the localStorage so I can see what I did.
     <br />Then you declare your AppContextProvider:
     </div>
 
