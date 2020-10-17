@@ -69,7 +69,7 @@ export const Start = () => {
     <div className='main-page'>
       <div className='text-main-page'>
         <p>Welcome to <Link to='/about' >Gerrit Boogaart's</Link> portfolio. This site is written in React using Hooks and sometimes Context.</p>
-        <p>My code is available on <a href='https://github.com/gerritboogaart/newweatherapp/' target='_blank'><Icon name='github' />GitHub</a></p>
+        <p>My code is available on <a href='https://github.com/gerritboogaart/gerritsmusings/' target='_blank'><Icon name='github' />GitHub</a></p>
 
         </div>
       <div className='card-holder'>
