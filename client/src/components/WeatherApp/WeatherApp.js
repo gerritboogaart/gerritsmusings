@@ -31,7 +31,6 @@ const locations = {
   }
 }
 
-// const weather = 'https://api.darksky.net/forecast/e24ad33f75846e0954a59d1c38033e6a';
 class WeatherApp extends Component {
   constructor() {
     super();

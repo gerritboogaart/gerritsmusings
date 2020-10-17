@@ -4,12 +4,12 @@
 }
 
 .container {
-  margin: 3rem;
+  margin: 0 3rem;
   display: flex;
 }
 
 .field {
-  width: 36.2rem;
+  width: 21.8rem;
   height: 20rem;
   border: 1px solid lightgrey;
   border-top: none;
@@ -45,14 +45,14 @@
 }
 
 .reset-button {
-  color: gray;
+  color: white;
   background: silver;
-  width: 10rem;
+  width: 7rem;
   line-height: 2rem;
   border: 1px solid silver;
   cursor: pointer;
   opacity: .6;
-  margin-left: 2rem;
+  margin: 1rem 16rem;
 }
 
 .reset-button-active {
@@ -78,22 +78,21 @@ outline: none!important;
 .congrats {
   text-align: center;
   height: 100%;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding-top: 6rem;
   color: gray;
 }
 
 .block-numbers {
   position: relative;
-  top: -2rem;
   left: 3rem;
   color: #b5acac;
 }
 
 .help-button {
   position: relative;
-  top: -24rem;
-  left: 40rem;
+  top: -24.1rem;
+  left: 26rem;
   cursor: pointer;
   opacity: .4;
 }
@@ -101,7 +100,7 @@ outline: none!important;
 .help-text {
   position: relative;
   top: -25.5rem;
-  left: 43rem;
+  left: 28rem;
   color: grey;
   width: 33rem;
 }

@@ -7,6 +7,7 @@ const locs = require('./locations.json');
 const port = process.env.PORT || 5000;
 const WEATHER_API = process.env.WEATHERAPI;
 const LOCAPI = process.env.LOCAPI;
+const GOOGLE = process.env.MAPAPI || 'mockapi';
 const weather = `https://api.darksky.net/forecast/${WEATHER_API}/`;
 
 const location = 'https://maps.googleapis.com/maps/api/geocode/json?';
@@ -17,6 +18,10 @@ if(process.env.NODE_ENV === 'production') {
   app.get('/test', function(req,res) {
     res.status(200).send('good things');
   });
+  app.get('/getapi', function(req,res){
+    res.status(200).send(GOOGLE);
+  })
+
   app.get('/weather', function(req,res,next){
     const loc = req.query.location;
     const url = `${weather}${loc}`;
@@ -57,6 +62,10 @@ app.get('/weather', function(req,res,next){
   })
   // res.status(200).send({succes: 1234});
 });
+
+app.get('/getapi', function(req,res){
+  res.status(200).send(GOOGLE);
+})
 
 app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from 'semantic-ui-react';
+import axios from 'axios';
 import './Photos.css';
 
 export const Photos = () => {
@@ -7,7 +8,20 @@ export const Photos = () => {
   const [mobile, setMobile] = useState(window.navigator.userAgent);
   const [isMobile, setIsMobile] = useState(false);
   const [size, setSize] = useState([500, 400]);
-  const [showText, setShowText] = useState(false)
+  const [showText, setShowText] = useState(false);
+  const [googleApi, setGoogleApi]= useState();
+
+  useEffect(() => {
+    if (!googleApi) {
+      axios.get('/getapi')
+      .then(result => {
+        setGoogleApi(result.data)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
+  });
 
   useEffect(() => {
     if (!isMobile) {
@@ -37,6 +51,8 @@ export const Photos = () => {
     if (!photo) return <div />
     const base = 'https://www.google.com/maps/embed/v1/place?key=';
     const api = 'AIzaSyB1HZVz7L6ls6xNQsNxU-j7-MiaGZvgeAo';
+    console.log(api, googleApi, api === googleApi);
+
     return base + api + '&q=' + QUERY[photo]['name'] + '&zoom=' + QUERY[photo]['zoom'];
   }
 

@@ -6,13 +6,13 @@ import './Container.css';
 const COLORS = [
   'lightblue', 'lightgrey', 'lightpink', 'lightgreen', 'lightgoldenrodyellow'
 ];
-
+const MTOP = 309;
 const HEIGHT = 50;
 const WIDTH = 50;
 const START = 0;
-const COLS = 10;
-const ROWS = [352, 302, 252, 202, 152];
-const R = { 352: 0, 302: 1, 252: 2, 202: 3, 152: 4 };
+const COLS = 6;
+const ROWS = [MTOP, 259, 209, 159, 109];
+const R = { [MTOP]: 0, 259: 1, 209: 2, 159: 3, 109: 4 };
 const PLAYROWS = 5;
 
 let won = false;
@@ -39,8 +39,8 @@ export class Container extends Component {
         const color = Math.floor((Math.random() * 5));
         return {
           left: 66 + (i * WIDTH),
-          top: 250 - (r * HEIGHT),
-          mTop: 352 - (r * HEIGHT),
+          top: 200 - (r * HEIGHT),
+          mTop: MTOP - (r * HEIGHT),
           background: COLORS[color],
           opacity: .3,
           row: r,
@@ -121,7 +121,7 @@ export class Container extends Component {
 
     setTimeout(() => {
       setStateAfterTimeOut();
-    }, 1000);
+    }, 300);
   }
 
   startMultipleMove = (newBlocks, coords) => {
@@ -182,7 +182,7 @@ export class Container extends Component {
       if (change === 0) return this.setState({ blocks: newBlocks }, () => this.afterMove());
       setTimeout(() => {
         setting(newBlocks);
-      }, 3)
+      }, 2)
     }
 
     const setting = (blocks) => this.setState({ blocks }, () => mapping());
@@ -229,7 +229,7 @@ export class Container extends Component {
     if (addColumnBlock.change === 1) {
       setTimeout(() => {
         this.startMove();
-      }, 200);
+      }, 25);
     };
   }
 
@@ -246,8 +246,7 @@ export class Container extends Component {
         blocks[4][i] = {
           left: 66 + (i * WIDTH),
           top: 100,
-          mTop: 352,
-          background: 'red',
+          mTop: MTOP,
           opacity: .3,
           row: 4,
           block: i,
@@ -255,9 +254,7 @@ export class Container extends Component {
         }
       }
     })
-
     return { blocks, change };
-
   }
 
   checkMissed = (blocks) => {
@@ -331,12 +328,10 @@ export class Container extends Component {
           <div className='field'>
             {this.drawBlocks()}
           </div>
-          <div className='reset-holder'>
-            <button className='reset-button' onClick={this.resetBlocks}>reset</button>
-          </div>
+
         </div>
         <div className='block-numbers'>
-          Step number: {this.state.step}
+          Clicks: {this.state.step}
           <span style={{ display: 'inline-block', marginLeft: '2rem' }}>
             Blocks Left: {this.state.left}
           </span>
@@ -344,12 +339,15 @@ export class Container extends Component {
             High Score: {score}
           </span>
         </div>
+        <div className='reset-holder'>
+            <button className='reset-button' onClick={this.resetBlocks}>reset</button>
+          </div>
         <div className='help-button'>
           <Icon name='question circle outline' color='grey' onClick={() => this.setState({ showHelp: !showHelp })} />
         </div>
+
         { showHelp && (
           <div className='help-text'>
-            <Icon link claseName='help-text-close' name='close' onClick={() => this.setState({ showHelp: false })} />
               Click on a block and all the adjacent blocks with the same color will disappear, all the blocks above the ones that disappeared will fall down.<br />
               Remove all blocks in a row gives you a surprise.<br />
               Clear all rows in the least number of clicks.
