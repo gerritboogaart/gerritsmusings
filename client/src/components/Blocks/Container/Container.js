@@ -75,7 +75,14 @@ export class Container extends Component {
     if (cs.length > 0) {
       cs.forEach(c => {
         if (c) {
-          mapBlocks(c, color, blocks);
+          const n = mapBlocks(c, color, blocks);
+          if (n.length > 0) {
+            n.forEach(cc => {
+              if (cc) {
+                mapBlocks(cc, color, blocks);
+              }
+            })
+          }
         }
       });
     }
@@ -116,7 +123,7 @@ export class Container extends Component {
       });
     });
     const setStateAfterTimeOut = () => {
-      this.setState({ blocks: newBlocks }, this.startMultipleMove(newBlocks, coords));
+      this.setState({ blocks: newBlocks },this.startMultipleMove(newBlocks, coords));
     };
 
     setTimeout(() => {
@@ -127,6 +134,7 @@ export class Container extends Component {
   startMultipleMove = (newBlocks, coords) => {
     if (coords.length < 1) return;
     const c = {};
+    console.log(coords)
     coords.forEach(([blockIndex, row]) => {
       c[blockIndex] = c[blockIndex] ? c[blockIndex] + 1 : 1;
       const column = map(newBlocks, (row) => row[blockIndex]);
@@ -192,25 +200,6 @@ export class Container extends Component {
 
   afterMove = () => {
     const blocks = clone(this.state.blocks);
-    let allHidden = [];
-    blocks.forEach(row => {
-      const hidden = filter(row, (block) => block.opacity === 0);
-      allHidden = [...allHidden, ...hidden];
-    });
-    const repl = [];
-    map(blocks, row => {
-      return map(row, block => {
-        const f = find(allHidden, b => b.top === block.top && b.left === block.left);
-        if (f && f !== block) repl.push([f, block]);
-      })
-    });
-    repl.forEach(block => {
-      blocks[block[0].row][block[0].block] = { ...block[1], row: block[0].row, block: block[0].block };
-      blocks[block[1].row][block[1].block] = {};
-    })
-    allHidden.forEach(block => {
-      if (blocks[block.row][block.block] && blocks[block.row][block.block].opacity === 0) blocks[block.row][block.block] = {};
-    });
     let left = 0;
     const missed = [];
     blocks.forEach((r, i) => r.forEach((b, ii) => {
@@ -228,7 +217,7 @@ export class Container extends Component {
     this.setState({ blocks: addColumnBlock.blocks, left });
     if (addColumnBlock.change === 1) {
       setTimeout(() => {
-        this.startMove();
+       this.startMove();
       }, 25);
     };
   }
