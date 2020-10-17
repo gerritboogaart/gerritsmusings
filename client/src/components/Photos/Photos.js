@@ -31,7 +31,7 @@ export const Photos = () => {
       const resize = mob ? [345, 350] : [500, 400];
       setSize(resize);
     }
-  }, [mobile, isMobile])
+  }, [isMobile])
 
   const moveLeft = () => setPhoto(photo - 1 < 1 ? 8 : photo - 1);
 

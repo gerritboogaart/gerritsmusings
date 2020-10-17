@@ -320,7 +320,7 @@ export class Container extends Component {
   }
 
   render() {
-    const { game, showHelp } = this.state;
+    const { showHelp } = this.state;
     const score = this.displayHiscore();
     return (
       <div className='blocks'>
