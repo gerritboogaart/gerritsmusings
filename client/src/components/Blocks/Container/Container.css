@@ -124,3 +124,21 @@ outline: none!important;
   background: grey;
   color: white;
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0 .5rem;
+  }
+
+  .reset-holder {
+    margin-left: 0rem;
+  }
+
+  .block-numbers {
+    left: 1rem;
+  }
+
+  .help-button {
+    left: 23rem;
+  }
+}

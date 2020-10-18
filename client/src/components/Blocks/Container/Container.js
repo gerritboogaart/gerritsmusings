@@ -3,6 +3,9 @@ import { get, isArray, map, clone, forEach } from 'lodash';
 import { Icon, Button } from 'semantic-ui-react';
 import './Container.css';
 
+const mobile = window.navigator.userAgent;
+const ISMOBILE = mobile.includes('iPhone') || mobile.includes('Android');
+
 const COLORS = [
   'lightblue', 'lightgrey', 'lightpink', 'lightgreen', 'lightgoldenrodyellow', 'lightsalmon', 'lightseagreen'
 ];
@@ -43,6 +46,7 @@ export class Container extends Component {
   resetBlocks = async (e) => {
     const { difficulty } = this.state;
     if (e) e.preventDefault();
+    const left = ISMOBILE ? 30 : 66;
     const rows = [];
     won = false;
     for (let r = 0; r < PLAYROWS; r++) {
@@ -51,7 +55,7 @@ export class Container extends Component {
       const blocks = map(row, (block, i) => {
         const color = Math.floor((Math.random() * LEVEL[difficulty]));
         return {
-          left: 66 + (i * WIDTH),
+          left: left + (i * WIDTH),
           top: 200 - (r * HEIGHT),
           mTop: MTOP - (r * HEIGHT),
           background: COLORS[color],
