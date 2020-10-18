@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import { AreaChart, linearGradient, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
+import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
 import Hourly from '../Hourly/Hourly';
 import { Icon, Input, Button } from 'semantic-ui-react';
 import { calcTemp, calcAmPm, renderToday } from '../../Utils/Temperature';
@@ -135,7 +135,7 @@ class WeatherApp extends Component {
       // const rainC = day.precipProbability > 0.04 ? parseFloat(day.precipProbability) * 100 : 0;
 
       return (
-        <div key={i} className='day-holder'>
+        <div key={i} className='day-holder' >
           <div className='top-day'>
             <ul className='day-ul'>
               <li style={{ fontWeight: 'bold' }}>{renderToday(time, i)}</li>

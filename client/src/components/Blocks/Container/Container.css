@@ -52,7 +52,7 @@
   border: 1px solid silver;
   cursor: pointer;
   opacity: .6;
-  margin: 1rem 16rem;
+  margin: 1rem 2rem;
 }
 
 .reset-button-active {
@@ -108,4 +108,15 @@ outline: none!important;
 .help-text-close {
   cursor: pointer;
   color: lightgrey;
+}
+
+.difficulty {
+  position: relative;
+  top: -15px;
+  left: 12px;
+}
+
+.difficulty .active {
+  background: grey;
+  color: white;
 }

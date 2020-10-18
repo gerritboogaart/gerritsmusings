@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { get, isArray, map, clone, filter, find, forEach } from 'lodash';
-import { Icon } from 'semantic-ui-react';
+import { get, isArray, map, clone, forEach } from 'lodash';
+import { Icon, Button } from 'semantic-ui-react';
 import './Container.css';
 
 const COLORS = [
-  'lightblue', 'lightgrey', 'lightpink', 'lightgreen', 'lightgoldenrodyellow'
+  'lightblue', 'lightgrey', 'lightpink', 'lightgreen', 'lightgoldenrodyellow', 'lightsalmon', 'lightseagreen'
 ];
 const MTOP = 309;
 const HEIGHT = 50;
@@ -15,10 +15,22 @@ const ROWS = [MTOP, 259, 209, 159, 109];
 const R = { [MTOP]: 0, 259: 1, 209: 2, 159: 3, 109: 4 };
 const PLAYROWS = 5;
 
+const LEVEL = {
+  easy: 3,
+  moderate: 5,
+  hard: 7
+}
+
+const STARTHI = {
+  easy: 1000,
+  moderate: 1000,
+  hard: 1000
+};
+
 let won = false;
 
 export class Container extends Component {
-  state = { blocks: [], step: START, left: 50, hiscore: 1000, showHelp: false };
+  state = { blocks: [], step: START, left: 50, hiscore: STARTHI, showHelp: false, difficulty: 'moderate' };
 
   componentDidMount() {
     this.resetBlocks();
@@ -29,6 +41,7 @@ export class Container extends Component {
   }
 
   resetBlocks = async (e) => {
+    const { difficulty } = this.state;
     if (e) e.preventDefault();
     const rows = [];
     won = false;
@@ -36,7 +49,7 @@ export class Container extends Component {
       const row = new Array(COLS);
       row.fill();
       const blocks = map(row, (block, i) => {
-        const color = Math.floor((Math.random() * 5));
+        const color = Math.floor((Math.random() * LEVEL[difficulty]));
         return {
           left: 66 + (i * WIDTH),
           top: 200 - (r * HEIGHT),
@@ -50,42 +63,37 @@ export class Container extends Component {
       })
       rows.push(blocks);
     }
-    const hiscore = await this.getHiScore();
+    let hiscore = await this.getHiScore();
+    hiscore = !hiscore || hiscore.length < 5 ? STARTHI :  JSON.parse(hiscore);
     this.setState({ left: 50, step: START, blocks: rows, hiscore }, () => this.startMove());
   }
 
   getSingleAdj = (co, color, blocks) => {
-    let cs = [];
     const mapBlocks = (co, color, blocks) => {
       const [x, y] = co;
       const a = [x, y - 1];
       const b = [x, y + 1];
       const c = [x - 1, y];
       const d = [x + 1, y];
-      return map([a, b, c, d], ([x, y]) => {
+      const adjBlocks = map([a, b, c, d], ([x, y]) => {
         if (blocks[x] && blocks[x][y] && blocks[x][y].background === color && blocks[x][y].opacity !== 1) {
           blocks[x][y] = { ...blocks[x][y], opacity: 1 };
           return [x, y]
         }
       });
-    }
-
-    cs = mapBlocks(co, color, blocks);
-
-    if (cs.length > 0) {
-      cs.forEach(c => {
-        if (c) {
-          const n = mapBlocks(c, color, blocks);
-          if (n.length > 0) {
-            n.forEach(cc => {
-              if (cc) {
-                mapBlocks(cc, color, blocks);
-              }
-            })
+      if (adjBlocks.filter((b) => b)) {
+        adjBlocks.forEach(coor => {
+          if (coor) {
+            mapBlocks(coor, color, blocks);
           }
-        }
-      });
+        })
+      }
+      return adjBlocks;
     }
+
+    mapBlocks(co, color, blocks);
+
+
     return blocks;
   }
 
@@ -96,11 +104,9 @@ export class Container extends Component {
     const newBlock = { ...block, opacity: op };
     const color = block.background;
     const newBlocks = this.getSingleAdj(coor, color, blocks);
-
     newBlocks[x][y] = newBlock;
 
     const setStateAfterTimeOut = () => this.setState({ blocks: newBlocks }, this.clickMultipleBlocks());
-
     setTimeout(() => {
       setStateAfterTimeOut();
     }, 10);
@@ -123,7 +129,7 @@ export class Container extends Component {
       });
     });
     const setStateAfterTimeOut = () => {
-      this.setState({ blocks: newBlocks },this.startMultipleMove(newBlocks, coords));
+      this.setState({ blocks: newBlocks }, this.startMultipleMove(newBlocks, coords));
     };
 
     setTimeout(() => {
@@ -134,13 +140,11 @@ export class Container extends Component {
   startMultipleMove = (newBlocks, coords) => {
     if (coords.length < 1) return;
     const c = {};
-    console.log(coords)
     coords.forEach(([blockIndex, row]) => {
       c[blockIndex] = c[blockIndex] ? c[blockIndex] + 1 : 1;
       const column = map(newBlocks, (row) => row[blockIndex]);
       const newColumn = this.getNewColumn(column, row, c[blockIndex]);
       newBlocks = this.getNewBlocks(newBlocks, blockIndex, newColumn);
-
     });
     this.setState({ blocks: newBlocks, step: this.state.step + 1 }, () => this.startMove());
   }
@@ -217,7 +221,7 @@ export class Container extends Component {
     this.setState({ blocks: addColumnBlock.blocks, left });
     if (addColumnBlock.change === 1) {
       setTimeout(() => {
-       this.startMove();
+        this.startMove();
       }, 25);
     };
   }
@@ -268,18 +272,19 @@ export class Container extends Component {
   }
 
   drawCongrats = () => {
-
+    const {difficulty} = this.state;
     let good = false;
-    if (won === false && (!Number(this.state.hiscore) || this.state.step < Number(this.state.hiscore))) {
+    if (won === false && (!Number(this.state.hiscore[difficulty]) || this.state.step < Number(this.state.hiscore[difficulty]))) {
       good = true;
       won = true;
-      localStorage.setItem('hiscore', this.state.step);
+      const newHi = { ...this.state.hiscore, [difficulty]: this.state.step };
+      localStorage.setItem('hiscore', JSON.stringify(newHi));
     }
     if (good) return (
       <div key='congrats' className='congrats'>
         <p>Congratulations! It took you {this.state.step} clicks!</p>
         <p></p>
-        <p>You improved your High Score!!!</p>
+        <p>You improved your {this.state.difficulty} High Score!!!</p>
       </div>
     );
     return (
@@ -294,7 +299,7 @@ export class Container extends Component {
   drawBlocks = () => {
     const blocks = get(this.state, 'blocks');
     if (isArray(blocks)) {
-      const rows =  map(blocks, (row, i) => {
+      const rows = map(blocks, (row, i) => {
         return map(row, (block, index) => this.drawBlock(block, i, index))
       })
       let congrats;
@@ -305,14 +310,20 @@ export class Container extends Component {
   }
 
   displayHiscore = () => {
-    return this.state.hiscore < 1 || this.state.hiscore > 999 ? '-' : this.state.hiscore;
+    const { hiscore, difficulty } = this.state;
+    return hiscore[difficulty] < 1 || hiscore[difficulty] > 999 ? '-' : hiscore[difficulty];
+  }
+
+  changeDifficulty = (difficulty) => {
+    this.setState({ difficulty }, () => this.resetBlocks());
   }
 
   render() {
-    const { showHelp } = this.state;
+    const { showHelp, difficulty } = this.state;
     const score = this.displayHiscore();
     return (
       <div className='blocks'>
+
         <div className='container'>
           <div className='field'>
             {this.drawBlocks()}
@@ -329,15 +340,22 @@ export class Container extends Component {
           </span>
         </div>
         <div className='reset-holder'>
-            <button className='reset-button' onClick={this.resetBlocks}>reset</button>
+          <div className='difficulty'>
+            <Button.Group size='mini' basic>
+              <Button className={difficulty === 'easy' ? 'active' : ''} onClick={() => this.changeDifficulty('easy')}>Easy</Button>
+              <Button className={difficulty === 'moderate' ? 'active' : ''} onClick={() => this.changeDifficulty('moderate')}> Medium</Button>
+              <Button className={difficulty === 'hard' ? 'active' : ''} onClick={() => this.changeDifficulty('hard')}>Hard</Button>
+            </Button.Group>
           </div>
+          <button className='reset-button' onClick={this.resetBlocks}>reset</button>
+        </div>
         <div className='help-button'>
           <Icon name='question circle outline' color='grey' onClick={() => this.setState({ showHelp: !showHelp })} />
         </div>
 
         { showHelp && (
           <div className='help-text'>
-              Click on a block and all the adjacent blocks with the same color will disappear, all the blocks above the ones that disappeared will fall down.<br />
+            Click on a block and all the adjacent blocks with the same color will disappear, all the blocks above the ones that disappeared will fall down.<br />
               Remove all blocks in a row gives you a surprise.<br />
               Clear all rows in the least number of clicks.
           </div>

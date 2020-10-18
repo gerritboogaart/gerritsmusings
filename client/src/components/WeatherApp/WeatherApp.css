@@ -29,7 +29,6 @@
 }
 
 .day-holder {
-  /* background: lightblue; */
   display: inline-block;
   width: 9rem;
   height: 23rem;
@@ -37,6 +36,7 @@
   vertical-align: top;
   padding: 0.2rem;
   border-radius: 6px;
+  /* border: 1px solid lightgray; */
 }
 
 .top-day {
