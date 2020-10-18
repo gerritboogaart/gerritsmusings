@@ -232,6 +232,7 @@ export class Container extends Component {
 
   checkEmptyColumns = (blocks) => {
     const row = new Array(COLS);
+    const left = ISMOBILE ? 30 : 66;
     row.fill(0);
     map(blocks, r => {
       map(r, (b, i) => row[i] = b.top ? row[i] + b.top : row[i]);
@@ -241,7 +242,7 @@ export class Container extends Component {
       if (column === 0) {
         change = 1;
         blocks[4][i] = {
-          left: 66 + (i * WIDTH),
+          left: left + (i * WIDTH),
           top: 100,
           mTop: MTOP,
           opacity: .3,
