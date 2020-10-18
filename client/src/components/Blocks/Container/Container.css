@@ -48,7 +48,7 @@
   color: white;
   background: silver;
   width: 7rem;
-  line-height: 2rem;
+  line-height: 26px;
   border: 1px solid silver;
   cursor: pointer;
   opacity: .6;
@@ -112,8 +112,12 @@ outline: none!important;
 
 .difficulty {
   position: relative;
-  top: -15px;
-  left: 12px;
+  top: -14px;
+  left: 14px;
+}
+
+.difficulty .buttons {
+  border-radius: 0px!important;
 }
 
 .difficulty .active {
