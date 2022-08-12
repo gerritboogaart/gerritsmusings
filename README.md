@@ -15,4 +15,4 @@ Apps in this portfolio:
 - Blocks: JavaScript and CSS3 to animate the blocks. I use localStorage to store the high score.
 - Photos: React and Google maps to display the photos and the location where the photos were taken
 
-Upgrading to heroku 23
+Upgrading to heroku 23 - 2022
