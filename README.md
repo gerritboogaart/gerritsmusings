@@ -14,3 +14,5 @@ Apps in this portfolio:
 - Weather: React with reChartJS, NodeJS, Express and axios in the back end. I use data from Darksky to get the data and Google maps to get the location.
 - Blocks: JavaScript and CSS3 to animate the blocks. I use localStorage to store the high score.
 - Photos: React and Google maps to display the photos and the location where the photos were taken
+
+Upgrading to heroku 23
