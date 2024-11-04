@@ -12,17 +12,17 @@ export const Photos = () => {
   const [showText, setShowText] = useState(false);
   const [googleApi, setGoogleApi] = useState();
 
-  // useEffect(() => {
-  //   if (!googleApi) {
-  //     axios.get('/getapi')
-  //       .then(result => {
-  //         setGoogleApi(result.data)
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       })
-  //   }
-  // });
+  useEffect(() => {
+    if (!googleApi) {
+      axios.get('https://gerritsmusing-api-1735bf43ab0c.herokuapp.com/getapi')
+        .then(result => {
+          setGoogleApi(result.data)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+  },[]);
 
   useEffect(() => {
     if (!isMobile) {
