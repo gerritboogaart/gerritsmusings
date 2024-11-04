@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter  } from 'react-router-dom';
 import { Start } from './components/Start/Start';
 import { Home } from './components/Forms/Home/Home';
 import { NavBar } from './components/NavBar/NavBar';
@@ -14,7 +14,7 @@ import { Photos } from './components/Photos/Photos';
 function App() {
   return (
     <div className="App">
-      <React.Fragment>
+      <BrowserRouter>
         <NavBar />
         <Switch>
           <Route exact path='/' render={() => <Start />} />
@@ -26,7 +26,7 @@ function App() {
           <Route path='/photos' render={() => <Photos />} />
           <Route path='/examples' render={() => <Examples />} />
         </Switch>
-      </React.Fragment>
+      </BrowserRouter>
     </div>
   );
 }
