@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const axios = require('axios');
 const locs = require('./locations.json');
+const cors = require('cors')
 
 const port = process.env.PORT || 5000;
 const WEATHER_API = process.env.WEATHERAPI;
@@ -12,6 +13,8 @@ const weather = `https://api.darksky.net/forecast/${WEATHER_API}/`;
 
 const location = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const api = LOCAPI;
+
+app.use(cors())
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
