@@ -12,17 +12,17 @@ export const Photos = () => {
   const [showText, setShowText] = useState(false);
   const [googleApi, setGoogleApi] = useState();
 
-  useEffect(() => {
-    if (!googleApi) {
-      axios.get('https://gerritsmusing-api-1735bf43ab0c.herokuapp.com/getapi')
-        .then(result => {
-          setGoogleApi(result.data)
-        })
-        .catch(error => {
-          console.log(error);
-        })
-    }
-  },[]);
+  // useEffect(() => {
+  //   if (!googleApi) {
+  //     axios.get('https://gerritsmusing-api-1735bf43ab0c.herokuapp.com/getapi')
+  //       .then(result => {
+  //         setGoogleApi(result.data)
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //       })
+  //   }
+  // },[]);
 
   useEffect(() => {
     if (!isMobile) {
@@ -38,7 +38,7 @@ export const Photos = () => {
   const moveRight = () => setPhoto(photo + 1 > 8 ? 1 : photo + 1);
 
   const QUERY = {
-    1: { name: 'virginia+beach+rudee+inlet', zoom: 8 },
+    1: { name: 'virginia+beach+rudee+inlet', zoom: 8, src:'/images/boomer_vabeach.jpg' },
     2: { name: 'charlottesville+va', zoom: 8 },
     3: { name: 'venice+beach', zoom: 8 },
     4: { name: 'nationals+park+washington+DC', zoom: 8 },
@@ -49,12 +49,15 @@ export const Photos = () => {
   }
 
   const getSrcUrl = () => {
-    if (!photo || !googleApi) return '';
-    const base = 'https://www.google.com/maps/embed/v1/place?key=';
-    const api = googleApi;
+    return QUERY[photo].src
+  } 
+  // const getSrcUrl = () => {
+  //   if (!photo || !googleApi) return '';
+  //   const base = 'https://www.google.com/maps/embed/v1/place?key=';
+  //   const api = googleApi;
 
-    return base + api + '&q=' + QUERY[photo]['name'] + '&zoom=' + QUERY[photo]['zoom'];
-  }
+  //   return base + api + '&q=' + QUERY[photo]['name'] + '&zoom=' + QUERY[photo]['zoom'];
+  // }
 
   return (
     <div className='photos-page'>
@@ -69,13 +72,13 @@ export const Photos = () => {
           {!photo || !googleApi ? (
             <Loader>Waiting for google api</Loader>
           ) : (
-              <iframe
+              <image
                 width={size[0]}
                 title="Where is this picture taken"
                 height={size[1]}
                 frameBorder="0"
                 src={getSrcUrl()} >
-              </iframe>
+              </image>
             )}
         </div>
       </div>
