@@ -4,7 +4,7 @@
   "description": "weather app",
   "main": "server.js",
   "engines": {
-    "node": "16.13.x"
+    "node": "20.x"
   },
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -27,15 +27,15 @@
   "author": "gerrit boogaart",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.20.0",
-    "concurrently": "^5.3.0",
-    "copy-to-clipboard": "^3.3.1",
-    "cors": "^2.8.5",
-    "env-cmd": "^10.1.0",
-    "express": "^4.17.1",
-    "http-proxy": "^1.18.1",
-    "lodash": "^4.17.20",
-    "mongodb": "^3.6.2",
-    "recharts": "^1.8.5"
+    "axios": "1.7.7",
+    "concurrently": "5.3.0",
+    "copy-to-clipboard": "3.3.1",
+    "cors": "2.8.5",
+    "env-cmd": "10.1.0",
+    "express": "4.21.1",
+    "http-proxy": "1.18.1",
+    "lodash": "4.17.20",
+    "mongodb": "3.6.2",
+    "recharts": "1.8.5"
   }
 }
