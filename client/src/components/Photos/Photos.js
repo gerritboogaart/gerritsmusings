@@ -69,17 +69,16 @@ export const Photos = () => {
           <Icon onClick={() => moveLeft()} className='left-angle' size='big' name='chevron circle left'></Icon>
         </div>
         <div className='right-side'>
-          {!photo || !googleApi ? (
-            <Loader>Waiting for google api</Loader>
-          ) : (
-              <image
+        
+ 
+              {/* <div
                 width={size[0]}
                 title="Where is this picture taken"
                 height={size[1]}
                 frameBorder="0"
-                src={getSrcUrl()} >
-              </image>
-            )}
+                style={{background:"url('../../../resources/boston.png')"}} /> */}
+             
+            
         </div>
       </div>
       <div className='photos-text'>
