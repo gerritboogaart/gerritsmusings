@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "weather app",
   "main": "index.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "npm start --prefix client",
     "client": "npm start --prefix client",
@@ -19,5 +22,8 @@
     "express"
   ],
   "author": "gerrit boogaart",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "copy-to-clipboard": "3.3.1"
+  }
 }
