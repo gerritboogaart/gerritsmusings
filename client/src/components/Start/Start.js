@@ -76,7 +76,8 @@ export const Start = () => {
       <Card.Group>
         {createCard('blog')}
         {/* {createCard('forms')} */}
-        {createCard('cards')}
+        {/* weather api discontinued */}
+        {/* {createCard('cards')} */}
         {createCard('blocks')}
         {createCard('photos')}
       </Card.Group>

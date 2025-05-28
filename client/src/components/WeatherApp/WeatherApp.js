@@ -6,12 +6,24 @@ import { Icon, Input, Button } from 'semantic-ui-react';
 import { calcTemp, calcAmPm, renderToday } from '../../Utils/Temperature';
 import { DAYS } from '../../Constants/constants';
 import { MOCK } from '../../Constants/mockdata';
-
+import { fetchWeatherApi } from 'openmeteo';
 import { clone } from 'lodash';
-// import socketIOClient from "socket.io-client";
-
-// import 'semantic-ui-css/semantic.min.css'
 import './WeatherApp.css';
+
+// const params = {
+// 	"latitude": 36.8506,
+// 	"longitude": -75.9779,
+// 	"daily": ["temperature_2m", "apparent_temperature", "precipitation_probability"],
+// 	"temperature_unit": "fahrenheit",
+// 	"wind_speed_unit": "mph",
+//   "format": 'json'
+// };
+
+// const URL = "https://api.open-meteo.com/v1/forecast";
+// const responses = () => fetchWeatherApi(URL, params);
+
+
+
 // 51.44083, 5.47778
 const locations = {
   eindhoven: {
@@ -38,7 +50,7 @@ class WeatherApp extends Component {
       response: false,
       endpoint: "",
       temp: 'F',
-      uri: 'https://gerritsmusing-api-1735bf43ab0c.herokuapp.com/weather?location=',
+      uri: URL,
       loc_uri: 'https://gerritsmusing-api-1735bf43ab0c.herokuapp.com/location?place=',
       location: 'vabeach',
       locations: locations,
@@ -53,7 +65,7 @@ class WeatherApp extends Component {
     const mobile = window.navigator.userAgent;
     const mob = mobile.includes('iPhone') || mobile.includes('Android');
     this.setState({ isMobile: mob });
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'testdevelopment') {
       const { daily } = MOCK;
       const extraDay = daily.data.map(day => {
         const time = new Date(day.time * 1000);
@@ -67,26 +79,51 @@ class WeatherApp extends Component {
       this.getWeatherUpdate();
     }
   };
-  getWeatherUpdate = () => {
+  getWeatherUpdate = async () => {
     const { uri, location, locations } = this.state;
     const long = locations[location].long;
     const lat = locations[location].lat;
-    const url = `${uri}${lat},${long}`;
-    axios.get(url)
-      .then(result => {
-        const { daily } = result.data;
-        const extraDay = daily.data.map(day => {
-          const time = new Date(day.time * 1000);
-          const curtime = `${time.getMonth() + 1}/${time.getDate()}`;
-          const dow = DAYS[time.getDay()];
-          const useDay = `${dow} ${curtime}`;
-          return { ...day, useDay };
-        });
-        this.setState({ timezone: result.data.timezone, response: result.data, loading: false, days: extraDay });
-      })
-      .catch(error => {
-        console.log(error);
-      })
+    // const url = `${uri}${lat},${long}`;
+
+
+    const params = {
+      "latitude": 52.52,
+      "longitude": 13.41,
+      "daily": ["temperature_2m_max", "temperature_2m_min", "uv_index_max", "precipitation_sum"],
+      "temperature_unit": "fahrenheit",
+      "wind_speed_unit": "mph",
+      "temporal_resolution": "hourly_6",
+      "format": "json"
+    };
+    const url_a = "https://api.open-meteo.com/v1/forecast?"
+    const url_b = `latitude=${lat}&longitude=${long}`
+    const url_c = "&daily=temperature_2m_max%2Ctemperature_2m_min%2Cuv_index_max%2Cprecipitation_sum&temperature_unit=fahrenheit&wind_speed_unit=mph&temporal_resolution=hourly_6&format=json";
+    const result = await axios.get(url_a + url_b + url_c);
+
+    console.log(result)
+
+    // const responses = await fetchWeatherApi(URL, params);
+    // console. log(responses[0])
+    // const hourly = responses.hourly();
+    // console.log(hourly)
+
+    this.setState({ timezone: result.data.timezone, response: result.data, loading: false, days: result.data.daily });
+
+    // responses().then(result => {
+    //   console.log(result)
+    //     const { daily } = result.data;
+    //     const extraDay = daily.data.map(day => {
+    //       const time = new Date(day.time * 1000);
+    //       const curtime = `${time.getMonth() + 1}/${time.getDate()}`;
+    //       const dow = DAYS[time.getDay()];
+    //       const useDay = `${dow} ${curtime}`;
+    //       return { ...day, useDay };
+    //     });
+    //     this.setState({ timezone: result.data.timezone, response: result.data, loading: false, days: extraDay });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   })
   }
 
   changeLocation = (loc) => this.setState({ location: loc }, () => this.getWeatherUpdate());
